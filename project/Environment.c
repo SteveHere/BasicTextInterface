@@ -1,4 +1,6 @@
-#include "Everything.c"
+#include "EverythingFromApps.c"
+
+//Description: This is where the whole interface is
 
 int Environment(void){
    int start_boolean = 0;

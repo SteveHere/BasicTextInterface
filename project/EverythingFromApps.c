@@ -1,8 +1,8 @@
-#include "apps/Tools.c"
-#include "apps/CurrentTime.c"
-#include "apps/ElectricBill.c"
-#include "apps/GuessGame.c"
-#include "apps/Calendar.c"
+#include "Apps/Tools.c"
+#include "Apps/CurrentTime.c"
+#include "Apps/ElectricBill.c"
+#include "Apps/GuessGame.c"
+#include "Apps/Calendar.c"
 
    char *name;  //for Greeting() and main()
 
