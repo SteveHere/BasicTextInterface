@@ -1,3 +1,10 @@
+/*
+Description: 
+This place is used to:
+- store custom methods/functions that can be used in more than one app
+- import libraries (make sure to include them the README)
+*/
+
 #pragma once
 #include <stdio.h>
 #include <stdlib.h>

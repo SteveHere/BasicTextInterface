@@ -1,3 +1,5 @@
+//Descripton: Tells the user the current time
+
 #include "Tools.c"
 
 CurrentTime(void){

@@ -1,5 +1,3 @@
-#include "Tools.c"
-
 /*
 Game description: 
 The generator generates a number based within
@@ -7,8 +5,10 @@ the limit given by the user. The user then has
 to guess the number.
 */
 
+#include "Tools.c"
+
 void GuessGame(void){
-   char buffer[7]; int test;
+   char buffer[7];
    unsigned short guess, rNumber, limit;
    char cont;
    srand(time(NULL));
@@ -18,7 +18,7 @@ void GuessGame(void){
    while(cont=='Y'){
       guess = 0; // reset guess to 0
       puts("--------------------------------------------------");
-      printf("Enter the maximum limit(2 to 65535): ");
+      printf("Enter the maximum limit(1 to 65535): ");
       fgets(buffer,7,stdin);
       sscanf(buffer, "%hu", &limit);
       //generate random number

@@ -1,5 +1,6 @@
+//Description: This app is used to make calendars based on inputs from stdin
+ 
 #include "Tools.c"
-
 
 void Calendar(void){
    unsigned char start, number, i, a;

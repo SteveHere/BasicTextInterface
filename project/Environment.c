@@ -1,6 +1,6 @@
-#include "EverythingFromApps.c"
+//Description: This is where the whole interface is. A high-level view of the entire thing.
 
-//Description: This is where the whole interface is
+#include "EverythingFromApps.c"
 
 int Environment(void){
    int start_boolean = 0;

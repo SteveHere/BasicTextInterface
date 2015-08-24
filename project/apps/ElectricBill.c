@@ -1,6 +1,6 @@
-#include "Tools.c"
-
 //Its use: To calculate your electric bill
+
+#include "Tools.c"
 
 double Calculate(double a){
    double b = 0;

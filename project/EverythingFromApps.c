@@ -1,3 +1,17 @@
+/*
+Description:
+Greeting():
+- Reads from stdin the user's name. 
+- Input buffer overflows may have been solved.
+- Mostly stable.
+ListOptions(): 
+- Presents user options in a text-based format
+- Make sure to add yours
+Selection(char select):
+- A switch case that runs a method, based on input from stdin
+- Make sure to add your method here
+*/
+
 #include "Apps/Tools.c"
 #include "Apps/CurrentTime.c"
 #include "Apps/ElectricBill.c"
@@ -50,6 +64,9 @@ Selection(char select){
       case '4': Calendar(); break;
       case '5': puts("In progress. come back later."); break;
       case '6': ListOptions(); break;
+      case '7':
+      case '8':
+      case '9':
       case '0': break;
       default: puts("Invalid option entered. Try again."); break;
       }
