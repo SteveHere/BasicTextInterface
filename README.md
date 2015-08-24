@@ -19,3 +19,18 @@ Linux/OSX/Every other OS
 
 # Why build this
 I was bored and decided to try to make a simple text-based interface in C.
+
+# Where is everything?
+
+Apps/Tools.c : All of the imported libraries are here. Go here in order to add a library. Use this file to also add functions that can be used more than once within the program.
+
+Apps folder : All of the application files are here. 
+
+EverythingFromApps.c : The file where most of the magic happens. Include your app here. Modify ListOptions() to add it to the list of options available to the user. Lastly, add it to Selection(char select) under one of the free cases.
+
+Envrionment.c : A bit of the magic happens here. This place is mostly a high-level view of the entire thing.
+
+Project.c : Almost nothing special here. Contains the main() method, so make sure to compile this file. Was set up like this for future expansions (See TODO in Project.c).
+
+
+

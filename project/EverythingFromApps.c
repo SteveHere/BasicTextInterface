@@ -64,9 +64,9 @@ Selection(char select){
       case '4': Calendar(); break;
       case '5': puts("In progress. come back later."); break;
       case '6': ListOptions(); break;
-      case '7':
-      case '8':
-      case '9':
+      //case '7': 
+      //case '8':
+      //case '9':
       case '0': break;
       default: puts("Invalid option entered. Try again."); break;
       }
