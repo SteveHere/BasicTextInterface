@@ -8,9 +8,18 @@
 
 #include "Environment.c"
 
+//typedef enum {LOGIN, EXIT}
+
 int main(void){
-   //insert code for login here
-   if(1){ Environment();} //modify "1" parameter once login method has been set up
-   else{}
+   char login;
+   do{
+   printf("Do you want to login(Y) or exit(N)? ");
+      login = Input();
+      if(login=='Y'){ Environment();} //modify "1" parameter once login method has been set up
+      else{
+         //puts("Incorrect username or password. Try again."); //only use when login method is complete
+         
+         }
+   }while(login!='N');
    return 0;
 }

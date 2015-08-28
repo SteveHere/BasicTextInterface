@@ -14,10 +14,11 @@ int Environment(void){
       else{
          printf("What would you like to do, %s?\n",name); start_boolean++;}
       select = Input();
-      puts("--------------------------------------------------");
+      if(select!='0'){puts("--------------------------------------------------");}
       Selection(select);
    }
    free(name);
-   printf("\nBye bye!\n"); sleep(2);
+   printf("\nBye bye!\n");
+   puts("--------------------------------------------------");
    return 0; 
 }
