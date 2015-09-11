@@ -13,7 +13,7 @@ This place is used to:
 #include <time.h>
 
 //for input of chars
-char Input(void){  
+char input(void){  
    char *buffer;  char ans;
    int bytes;
    int read_size = 4;
@@ -32,10 +32,10 @@ char Input(void){
 }
 
 //to be used for verification purposes
-char Verify(void){  
+char verify(void){  
    char c;
    printf("Enter 'Y' to continue (Y/N): ");
-   c = Input();
+   c = input();
    puts(" ");
    return c;
-   }
+}

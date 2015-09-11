@@ -1,8 +1,8 @@
 //Its use: To calculate your electric bill
 
-#include "Tools.c"
+#include "tools.c"
 
-double Calculate(double a){
+double calculate(double a){
    double b = 0;
       if(a>1000){      b = (a-1000)*10.97 + 4450 + 790 + 1870;   }
       else if(a>500){  b = (a-500)*8.9 + 790 + 1870;             }
@@ -16,13 +16,13 @@ double Calculate(double a){
    return b;
 }
 
-void ElectricBill(void){
+void electricBill(void){
    double bill, pm, cm, units;
    char c;
-   char buffer_a[15], buffer_b[15];
+   char buffer_a[20], buffer_b[20];
    printf("\nElectric Bill Calculator\n");
    puts("--------------------------------------------------");
-   c = Verify();
+   c = verify();
    while(c == 'Y'){
       puts("--------------------------------------------------");
       bill=0; //reset bill to 0
@@ -38,8 +38,8 @@ void ElectricBill(void){
          if(units<0){ printf("Invalid inputs. Try again.\n");}
          else{
             printf("Total units consumed: %.2f\n",units);
-            bill = Calculate(units);
+            bill = calculate(units);
             printf("Total Bill = $%.2f\n",bill);
              }
-      c = Verify();}
+      c = verify();}
 }

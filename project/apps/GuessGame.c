@@ -5,16 +5,16 @@ the limit given by the user. The user then has
 to guess the number.
 */
 
-#include "Tools.c"
+#include "tools.c"
 
-void GuessGame(void){
+void guessGame(void){
    char buffer[7];
    unsigned short guess, rNumber, limit;
    char cont;
    srand(time(NULL));
    puts("The Guessing Game");
    puts("--------------------------------------------------");
-   cont = Verify();   
+   cont = verify();   
    while(cont=='Y'){
       guess = 0; // reset guess to 0
       puts("--------------------------------------------------");
@@ -35,6 +35,6 @@ void GuessGame(void){
             }
          else{printf("Invalid input. Try again.\n");}
          }
-      cont = Verify();
+      cont = verify();
       }
 }

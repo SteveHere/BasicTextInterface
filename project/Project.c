@@ -6,17 +6,22 @@
 //  - Find a way to protect the file
 //
 
-#include "Environment.c"
+#include "environment.c"
 
 int main(void){
    char login;
    while(login!='N'){
       printf("Do you want to login(Y) or exit(N)? ");
-      login = Input();
-      if(login=='Y'){ Environment();} //modify parameter once login method has been set up
+      /*only to be used once it has been implemented
+      puts("--------------------------------------------------");
+      printf("\nEnter your username: ");
+      printf("\nEnter your password: ");
+      puts(" ");
+      */
+      login = input();
+      if(login=='Y'){ environment();} //modify parameter once login method has been set up
       else{
          //puts("Incorrect username or password. Try again."); //only use when login method is complete
-         
          }
    }
    return 0;

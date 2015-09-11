@@ -1,26 +1,26 @@
 /*
 Description:
-Greeting():
+greeting():
 - Reads from stdin the user's name. 
 - Input buffer overflows may have been solved.
 - Mostly stable.
-ListOptions(): 
+listOptions(): 
 - Presents user options in a text-based format
 - Make sure to add yours
-Selection(char select):
+selection(char select):
 - A switch case that runs a method, based on input from stdin
 - Make sure to add your method here
 */
 
-#include "Apps/Tools.c"
-#include "Apps/CurrentTime.c"
-#include "Apps/ElectricBill.c"
-#include "Apps/GuessGame.c"
-#include "Apps/Calendar.c"
+#include "apps/tools.c"
+#include "apps/currentTime.c"
+#include "apps/electricBill.c"
+#include "apps/guessGame.c"
+#include "apps/calendar.c"
 
    char *name;  //for Greeting() and main()
 
-Greeting(void){
+greeting(void){
    int bytes_read;
    int size = 30;
    puts("Hello. What is your name?");
@@ -42,7 +42,7 @@ Greeting(void){
    
 }
 
-ListOptions(void){
+listOptions(void){
    puts(" -------------------------------- ");
    puts("|Options                         |");
    puts("|--------------------------------|");
@@ -56,14 +56,14 @@ ListOptions(void){
    puts(" --------------------------------");
 }
 
-Selection(char select){
+selection(char select){
    switch(select){
-      case '1': CurrentTime();  break;
-      case '2': ElectricBill(); break;
-      case '3': GuessGame(); break;
-      case '4': Calendar(); break;
+      case '1': currentTime();  break;
+      case '2': electricBill(); break;
+      case '3': guessGame(); break;
+      case '4': calendar(); break;
       case '5': puts("In progress. come back later."); break;
-      case '6': ListOptions(); break;
+      case '6': listOptions(); break;
       //case '7': 
       //case '8':
       //case '9':

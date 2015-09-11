@@ -1,8 +1,8 @@
 //Descripton: Tells the user the current time
 
-#include "Tools.c"
+#include "tools.c"
 
-CurrentTime(void){
+currentTime(void){
    time_t rawtime;
    struct tm * timeinfo;
    time (&rawtime);

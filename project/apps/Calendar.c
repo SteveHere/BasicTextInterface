@@ -1,14 +1,14 @@
 //Description: This app is used to make calendars based on inputs from stdin
  
-#include "Tools.c"
+#include "tools.c"
 
-void Calendar(void){
+void calendar(void){
    unsigned char start, number, i, a;
    char c;
    char buffer_a[4], buffer_b[4];
    puts("Calendar Generator");
    puts("--------------------------------------------------");
-   c = Verify();
+   c = verify();
    while(c=='Y'){
       puts("--------------------------------------------------");
       printf("Enter the start day of the month (1(Mon) to 7(Sun)) : ");
@@ -31,6 +31,6 @@ void Calendar(void){
       }
       printf("\n---------------------------------\n");
       printf("\nCalendar complete.\n");
-      c = Verify();
+      c = verify();
    }
 }
