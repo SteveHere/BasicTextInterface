@@ -9,7 +9,7 @@ void calendar(void){
    puts("Calendar Generator");
    puts("--------------------------------------------------");
    c = verify();
-   while(c=='Y'){
+   while(c=='Y'||c=='y'){
       puts("--------------------------------------------------");
       printf("Enter the start day of the month (1(Mon) to 7(Sun)) : ");
       fgets(buffer_a,4,stdin);

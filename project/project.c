@@ -10,7 +10,7 @@
 
 int main(void){
    char login;
-   while(login!='N'){
+   while(!(login=='N'||login=='n')){
       printf("Do you want to login(Y) or exit(N)? ");
       /*only to be used once it has been implemented
       puts("--------------------------------------------------");
@@ -19,7 +19,7 @@ int main(void){
       puts(" ");
       */
       login = input();
-      if(login=='Y'){ environment();} //modify parameter once login method has been set up
+      if(login=='Y'||login=='y'){ environment();} //modify parameter once login method has been set up
       else{
          //puts("Incorrect username or password. Try again."); //only use when login method is complete
          }

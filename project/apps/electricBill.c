@@ -23,7 +23,7 @@ void electricBill(void){
    printf("\nElectric Bill Calculator\n");
    puts("--------------------------------------------------");
    c = verify();
-   while(c == 'Y'){
+   while(c == 'Y'||c == 'y'){
       puts("--------------------------------------------------");
       bill=0; //reset bill to 0
       printf("Enter your previous month reading: ");
@@ -40,6 +40,7 @@ void electricBill(void){
             printf("Total units consumed: %.2f\n",units);
             bill = calculate(units);
             printf("Total Bill = $%.2f\n",bill);
-             }
-      c = verify();}
+         }
+      c = verify();
+   }
 }

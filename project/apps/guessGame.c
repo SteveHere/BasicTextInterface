@@ -15,7 +15,7 @@ void guessGame(void){
    puts("The Guessing Game");
    puts("--------------------------------------------------");
    cont = verify();   
-   while(cont=='Y'){
+   while(cont=='Y'||cont=='y'){
       guess = 0; // reset guess to 0
       puts("--------------------------------------------------");
       printf("Enter the maximum limit(1 to 65535): ");
@@ -32,9 +32,9 @@ void guessGame(void){
                printf("Congratulations! You found the number!\n");}
             else{
                printf("Sorry, your guess was %s. Try again!\n", ((guess>rNumber)?"too high":"too low") );}
-            }
-         else{printf("Invalid input. Try again.\n");}
          }
-      cont = verify();
+         else{printf("Invalid input. Try again.\n");}
       }
+      cont = verify();
+   }
 }

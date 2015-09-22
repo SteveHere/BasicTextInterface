@@ -12,13 +12,14 @@ selection(char select):
 - Make sure to add your method here
 */
 
+   char *name;  //for Greeting() and main()
+
 #include "apps/tools.c"
 #include "apps/currentTime.c"
 #include "apps/electricBill.c"
 #include "apps/guessGame.c"
 #include "apps/calendar.c"
-
-   char *name;  //for Greeting() and main()
+#include "apps/workplaceSim.c"
 
 greeting(void){
    int bytes_read;
@@ -43,17 +44,17 @@ greeting(void){
 }
 
 listOptions(void){
-   puts(" -------------------------------- ");
-   puts("|Options                         |");
-   puts("|--------------------------------|");
-   puts("|1 --- Current Time and Date     |");
-   puts("|2 --- Electric Bill Calculator  |");
-   puts("|3 --- The Guessing Game         |");
-   puts("|4 --- Calendar Generator        |");
-   puts("|5 --- Math Game (in progress)   |");
-   puts("|6 --- List of Options           |");
-   puts("|0 --- Exit                      |");
-   puts(" --------------------------------");
+   puts(" ----------------------------------------------- ");
+   puts("|Options                                        |");
+   puts("|-----------------------------------------------|");
+   puts("|1 --- Current Time and Date                    |");
+   puts("|2 --- Electric Bill Calculator                 |");
+   puts("|3 --- The Guessing Game                        |");
+   puts("|4 --- Calendar Generator                       |");
+   puts("|5 --- Workplace Simulator 2015 (in progress)   |");
+   puts("|6 --- List of Options                          |");
+   puts("|0 --- Exit                                     |");
+   puts(" -----------------------------------------------");
 }
 
 selection(char select){
@@ -62,7 +63,7 @@ selection(char select){
       case '2': electricBill(); break;
       case '3': guessGame(); break;
       case '4': calendar(); break;
-      case '5': puts("In progress. come back later."); break;
+      case '5': workplaceSim(); break;
       case '6': listOptions(); break;
       //case '7': 
       //case '8':
