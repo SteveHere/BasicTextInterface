@@ -27,7 +27,8 @@ char input(void){
       }
    }
    if(bytes!=-1){ ans = buffer[0]; return ans;}
-   else{ fputs("Read error. Try again.", stderr);}
+   //for error handling
+   else{ fputs("Something went wrong. Please try again.",stderr); }
    free(buffer);
 }
 
@@ -39,3 +40,5 @@ char verify(void){
    puts(" ");
    return c;
 }
+
+//TODO: Add more functions for the input of characters into the program
