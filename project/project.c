@@ -7,11 +7,12 @@
 //
 
 #include <stdio.h>
+#include <string.h>
 #include "environment.h"
 #include "apps/tools.h"
 
 int main(void){
-	char buffer[50];
+	//char buffer[50];
 	char *username = "admin";
 	char *password = "123456";
 	char login;
@@ -28,12 +29,16 @@ int main(void){
 		fgets(buffer,50,stdin);
 		sscanf(buffer, "%s", password);
 		*/
-		if((login=='Y'||login=='y') && (username == "admin") && (password == "123456")){
-			environment(username);
-		} //modify parameter once login method has been set up
-		else{
-			puts("Incorrect username or password. Try again."); //only use when login method is complete
+		if( (login=='Y'||login=='y') ){
+			//verify if username and password are similar
+			if((strcmp(username, "admin") == 0) && (strcmp(password, "123456") == 0)){
+				environment(username);
+			}
+			else{
+				puts("Incorrect username or password. Try again.");
+			}
 		}
 	}while(!(login=='N'||login=='n'));
+	puts("Bye!");
 	return 0;
 }
