@@ -1,11 +1,12 @@
 //Descripton: Tells the user the current time
 
-#include "tools.c"
+#include <stdio.h>
+#include <time.h>
 
-currentTime(void){
-   time_t rawtime;
-   struct tm * timeinfo;
-   time (&rawtime);
-   timeinfo = localtime (&rawtime);
-   printf ("\nCurrent local time and date:\n%s", asctime(timeinfo));
+void currentTime(void){
+	time_t rawtime;
+	struct tm * timeinfo;
+	time (&rawtime);
+	timeinfo = localtime (&rawtime);
+	printf ("\nCurrent local time and date:\n%s", asctime(timeinfo));
 }
