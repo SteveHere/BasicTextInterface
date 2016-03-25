@@ -13,7 +13,7 @@ This place is used to:
 char charInput(){
 	char *buffer;  char ans;
 	int bytes;
-	int read_size = 4;
+	size_t read_size = 4;
 	scanf(" ");
 	buffer = (char*) malloc (read_size+1);
 	bytes = getline(&buffer,&read_size,stdin);
@@ -38,7 +38,7 @@ char charInput(){
 
 char* stringInput(){
 	int bytes_read;
-	int size = 50;
+	size_t size = 50;
 	char *name = (char *) malloc (size + 1);
 	bytes_read = getline(&name,&size,stdin);
 	//removes '\n' at end of line if it exists
