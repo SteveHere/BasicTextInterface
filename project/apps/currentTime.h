@@ -8,6 +8,6 @@
 #ifndef PROJECT_APPS_CURRENTTIME_H_
 #define PROJECT_APPS_CURRENTTIME_H_
 
-void currentTimr(void);
+void currentTime(void);
 
 #endif /* PROJECT_APPS_CURRENTTIME_H_ */

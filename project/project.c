@@ -7,28 +7,29 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "environment.h"
 #include "apps/tools.h"
 
 int main(void){
-	//char buffer[50];
-	char *username = "admin";
-	char *password = "123456";
-	char login;
 	do{
-		printf("Do you want to login(Y) or exit(N)? ");
-		login = input();
+		char login;
+		char *username;
+		char *password;
+		do{
+			printf("Do you want to login(Y) or exit(N)? ");
+			login = charInput();
+		}while(
+				!( (login=='N') || (login=='n') || (login=='Y') || (login=='y') )
+				);
 		puts("--------------------------------------------------");
-		/*
-		printf("\nEnter your username: ");
-		fgets(&buffer,50,stdin);
-		sscanf(buffer, "%s", username);
-		memset(&buffer[0], 0, sizeof(buffer));
-		printf("\nEnter your password: ");
-		fgets(buffer,50,stdin);
-		sscanf(buffer, "%s", password);
-		*/
+		if((login=='N')||(login=='n'))
+			break;
+		printf("Enter your username: ");
+		username = stringInput();
+		printf("Enter your password: ");
+		password = stringInput();
 		if( (login=='Y'||login=='y') ){
 			//verify if username and password are similar
 			if((strcmp(username, "admin") == 0) && (strcmp(password, "123456") == 0)){
@@ -38,7 +39,9 @@ int main(void){
 				puts("Incorrect username or password. Try again.");
 			}
 		}
-	}while(!(login=='N'||login=='n'));
+		free(username);
+		free(password);
+	}while(1);
 	puts("Bye!");
 	return 0;
 }

@@ -12,6 +12,7 @@ selection(char select):
 - Make sure to add your method here
  */
 
+#include <stdio.h>
 #include "apps/tools.h"
 #include "apps/currentTime.h"
 #include "apps/electricBill.h"

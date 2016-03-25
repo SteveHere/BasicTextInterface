@@ -10,6 +10,8 @@ This game is a text-based simulation of the daily:
 #include <stdio.h>
 #include "tools.h"
 
+void mainWorkplaceSimLoop(char *name);
+
 void workplaceSim(char *name){
 	char cont;
 	puts("Welcome to Workplace Simulator 2015!");
@@ -25,7 +27,7 @@ void workplaceSim(char *name){
 void mainWorkplaceSimLoop(char *name){
 	char choice;
 	printf("Welcome to your first day, %s! What do you want to do?", name);
-	choice = input();
+	choice = charInput();
 	//remove this section once game is complete
 	puts("Game is currently being built. Please come back later.");
 	//end section

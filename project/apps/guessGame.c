@@ -6,6 +6,9 @@ to guess the number.
  */
 
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include <ctype.h>
 #include "tools.h"
 
 void guessGame(void){

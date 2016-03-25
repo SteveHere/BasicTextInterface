@@ -8,8 +8,8 @@
 #ifndef PROJECT_APPS_TOOLS_H_
 #define PROJECT_APPS_TOOLS_H_
 
-char input();
-
+char charInput();
+char* stringInput();
 char verify();
 
 #endif /* PROJECT_APPS_TOOLS_H_ */

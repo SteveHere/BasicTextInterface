@@ -6,9 +6,11 @@ This place is used to:
  */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 //for input of chars
-char input(){
+char charInput(){
 	char *buffer;  char ans;
 	int bytes;
 	int read_size = 4;
@@ -34,10 +36,10 @@ char input(){
 	}
 }
 
-/*greeting(void){
+char* stringInput(){
 	int bytes_read;
 	int size = 50;
-	name = (char *) malloc (size + 1);
+	char *name = (char *) malloc (size + 1);
 	bytes_read = getline(&name,&size,stdin);
 	//removes '\n' at end of line if it exists
 	if(name != NULL){
@@ -45,20 +47,18 @@ char input(){
 		if(len > 0 && name[len-1]=='\n'){ name[--len]='\0';}
 	}
 	if(bytes_read != -1){
-		puts("--------------------------------------------------");
-		printf("Hello there, %s.\n\n",name);
+		return (char *) name;
 	}
 	else{
 		puts("ERROR!ERROR!EXITING PROGRAM!");
 		exit(0);
 	}
-
-}*/
+}
 
 //to be used for verification purposes
 char verify(){
 	printf("Enter 'Y' to continue (Y/N): ");
-	return input();
+	return charInput();
 	puts(" ");
 }
 
