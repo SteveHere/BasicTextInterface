@@ -2,7 +2,7 @@
  * everythingFromApps.h
  *
  *  Created on: Mar 25, 2016
- *      Author: User
+ *      Author: SteveHere
  */
 
 #ifndef PROJECT_EVERYTHINGFROMAPPS_H_

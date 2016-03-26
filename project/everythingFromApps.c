@@ -1,9 +1,5 @@
 /*
 Description:
-greeting():
-- Reads from stdin the user's name. 
-- Input buffer overflows may have been solved.
-- Mostly stable.
 listOptions(): 
 - Presents user options in a text-based format
 - Make sure to add yours

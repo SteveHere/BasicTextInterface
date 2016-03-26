@@ -2,7 +2,7 @@
  * guessGame.h
  *
  *  Created on: Mar 25, 2016
- *      Author: User
+ *      Author: SteveHere
  */
 
 #ifndef PROJECT_APPS_GUESSGAME_H_
