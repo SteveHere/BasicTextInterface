@@ -13,35 +13,30 @@
 #include "apps/tools.h"
 
 int main(void){
+	char login;
 	do{
-		char login;
 		char *username;
 		char *password;
-		do{
-			printf("Do you want to login(Y) or exit(N)? ");
-			login = charInput();
-		}while(
-				!( (login=='N') || (login=='n') || (login=='Y') || (login=='y') )
-				);
-		puts("--------------------------------------------------");
-		if((login=='N')||(login=='n'))
-			break;
-		printf("Enter your username: ");
-		username = stringInput();
-		printf("Enter your password: ");
-		password = stringInput();
+		login = inputBinary(0);
+		lineBreak();
 		if( (login=='Y'||login=='y') ){
+			printf("Enter your username: ");
+			username = stringInput();
+			printf("Enter your password: ");
+			password = stringInput();
 			//verify if username and password are similar
 			if((strcmp(username, "admin") == 0) && (strcmp(password, "123456") == 0)){
+				lineBreak();
 				environment(username);
 			}
 			else{
-				puts("Incorrect username or password. Try again.");
+				printf("\nIncorrect username or password. Try again.\n");
+				lineBreak();
 			}
+			free(username);
+			free(password);
 		}
-		free(username);
-		free(password);
-	}while(1);
+	}while( !( (login=='N')||(login=='n') ) );
 	puts("Bye!");
 	return 0;
 }

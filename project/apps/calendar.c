@@ -3,16 +3,17 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <time.h>
+#include "tools.h"
 
 void calendar(void){
 	unsigned char start, number, i, a;
 	char c;
 	char buffer_a[4], buffer_b[4];
 	puts("Calendar Generator");
-	puts("--------------------------------------------------");
-	c = verify();
+	lineBreak();
+	c = inputBinary(1);
 	while(c=='Y'||c=='y'){
-		puts("--------------------------------------------------");
+		lineBreak();
 		printf("Enter the start day of the month (1(Mon) to 7(Sun)) : ");
 		fgets(buffer_a,4,stdin);
 		sscanf(buffer_a,"%hhu",&start);
@@ -33,6 +34,6 @@ void calendar(void){
 		}
 		printf("\n---------------------------------\n");
 		printf("\nCalendar complete.\n");
-		c = verify();
+		c = inputBinary(1);
 	}
 }

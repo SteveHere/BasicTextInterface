@@ -17,11 +17,11 @@ void guessGame(void){
 	char cont;
 	srand(time(NULL));
 	puts("The Guessing Game");
-	puts("--------------------------------------------------");
-	cont = verify();
+	lineBreak();
+	cont = inputBinary(1);
 	while(cont=='Y'||cont=='y'){
 		guess = 0; // reset guess to 0
-		puts("--------------------------------------------------");
+		lineBreak();
 		printf("Enter the maximum limit(1 to 65535): ");
 		fgets(buffer,7,stdin);
 		sscanf(buffer, "%hu", &limit);
@@ -30,7 +30,7 @@ void guessGame(void){
 		while(guess!=rNumber){
 			printf("\nGuess the random number(1 to %d): ",limit);
 			fgets(buffer,7,stdin);
-			if(isdigit(buffer[0])){
+			if(isdigit((int)buffer[0])){
 				sscanf(buffer, "%hu", &guess);
 				if(guess==rNumber){
 					printf("Congratulations! You found the number!\n");}
@@ -39,6 +39,6 @@ void guessGame(void){
 			}
 			else{printf("Invalid input. Try again.\n");}
 		}
-		cont = verify();
+		cont = inputBinary(1);
 	}
 }

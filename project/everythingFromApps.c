@@ -18,7 +18,7 @@ selection(char select):
 
 void listOptions(void){
 	puts(" ----------------------------------------------- ");
-	puts("|Options                                        |");
+	puts("|List of Options                                |");
 	puts("|-----------------------------------------------|");
 	puts("|1 --- Current Time and Date                    |");
 	puts("|2 --- Electric Bill Calculator                 |");

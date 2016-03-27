@@ -22,10 +22,10 @@ void electricBill(void){
 	char c;
 	char buffer_a[20], buffer_b[20];
 	printf("\nElectric Bill Calculator\n");
-	puts("--------------------------------------------------");
-	c = verify();
+	lineBreak();
+	c = inputBinary(1);
 	while(c == 'Y'||c == 'y'){
-		puts("--------------------------------------------------");
+		lineBreak();
 		bill=0; //reset bill to 0
 		printf("Enter your previous month reading: ");
 		fgets(buffer_a,15,stdin);
@@ -42,6 +42,6 @@ void electricBill(void){
 			bill = calculate(units);
 			printf("Total Bill = $%.2f\n",bill);
 		}
-		c = verify();
+		c = inputBinary(1);
 	}
 }

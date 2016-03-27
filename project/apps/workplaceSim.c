@@ -15,12 +15,12 @@ void mainWorkplaceSimLoop(char *name);
 void workplaceSim(char *name){
 	char cont;
 	puts("Welcome to Workplace Simulator 2015!");
-	cont = verify();
-	puts("--------------------------------------------------");
+	cont = inputBinary(1);
+	lineBreak();
 	while(cont=='y'||cont=='Y'){
 		mainWorkplaceSimLoop(name);
-		puts("--------------------------------------------------");
-		cont = verify();
+		lineBreak();
+		cont = inputBinary(1);
 	}
 }
 
