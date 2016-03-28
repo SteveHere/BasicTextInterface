@@ -8,12 +8,37 @@ This place is used to:
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <termios.h>
 
 #define TRUE 1
 #define FALSE 0
 
+//outputs a line to the console
 void lineBreak(){
 	puts("----------------------------------------");
+}
+
+//a getline() substitute for passwords. Disables echo so that input cannot be seen
+//Obtained from: http://www.gnu.org/savannah-checkouts/gnu/libc/manual/html_node/getpass.html
+ssize_t my_getpass (char **lineptr, size_t *n, FILE *stream){
+	struct termios old, new;
+	int nread;
+
+	/* Turn echoing off and fail if we can’t. */
+	if (tcgetattr (fileno (stream), &old) != 0)
+		return -1;
+	new = old;
+	new.c_lflag &= ~ECHO;
+	if (tcsetattr (fileno (stream), TCSAFLUSH, &new) != 0)
+		return -1;
+
+	/* Read the password. */
+	nread = getline (lineptr, n, stream);
+
+	/* Restore terminal. */
+	(void) tcsetattr (fileno (stream), TCSAFLUSH, &old);
+
+	return nread;
 }
 
 //for input of chars
@@ -43,12 +68,18 @@ char charInput(){
 	}
 }
 
-//for input of strings
-char* stringInput(){
+//for input of strings, with the turnOffEcho flag for sensitive info
+char* stringInput(int turnOffEcho){
 	int bytes_read;
 	size_t read_size = 50;
 	char *name = (char *) malloc (read_size + 1);
-	bytes_read = getline(&name,&read_size,stdin);
+	if(turnOffEcho == TRUE){
+		bytes_read = my_getpass(&name,&read_size,stdin);
+		//added puts() as newline is not created when 'enter' is pushed
+		puts(" ");
+	}
+	else
+		bytes_read = getline(&name,&read_size,stdin);
 	//removes '\n' at end of line if it exists
 	if(name != NULL){
 		size_t len = strlen(name);

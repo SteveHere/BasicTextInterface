@@ -21,11 +21,12 @@ int main(void){
 		lineBreak();
 		if( (login=='Y'||login=='y') ){
 			printf("Enter your username: ");
-			username = stringInput();
+			username = stringInput(0);
 			printf("Enter your password: ");
-			password = stringInput();
+			password = stringInput(1);
 			//verify if username and password are similar
 			if((strcmp(username, "admin") == 0) && (strcmp(password, "123456") == 0)){
+				puts(" ");
 				lineBreak();
 				environment(username);
 			}

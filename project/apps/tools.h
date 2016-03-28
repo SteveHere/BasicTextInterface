@@ -9,8 +9,9 @@
 #define PROJECT_APPS_TOOLS_H_
 
 void lineBreak();
+ssize_t my_getpass (char **lineptr, size_t *n, FILE *stream);
 char charInput();
-char* stringInput();
+char* stringInput(int turnOffEcho);
 char inputBinary(int continueMessage);
 
 #endif /* PROJECT_APPS_TOOLS_H_ */

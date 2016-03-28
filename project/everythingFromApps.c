@@ -28,6 +28,7 @@ void listOptions(void){
 	puts("|6 --- List of Options                          |");
 	puts("|0 --- Exit                                     |");
 	puts(" -----------------------------------------------");
+	puts(" ");
 }
 
 void selection(char select, char *name){
