@@ -45,7 +45,7 @@ ssize_t my_getpass (char **lineptr, size_t *n, FILE *stream){
 char charInput(){
 	char *buffer;  char ans;
 	int bytes;
-	size_t read_size = 4;
+	size_t read_size = 1;
 	scanf(" ");
 	buffer = (char*) malloc (read_size+1);
 	bytes = getline(&buffer,&read_size,stdin);
@@ -71,7 +71,7 @@ char charInput(){
 //for input of strings, with the turnOffEcho flag for sensitive info
 char* stringInput(int turnOffEcho){
 	int bytes_read;
-	size_t read_size = 50;
+	size_t read_size = 1;
 	char *name = (char *) malloc (read_size + 1);
 	if(turnOffEcho == TRUE){
 		bytes_read = my_getpass(&name,&read_size,stdin);
