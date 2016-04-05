@@ -12,99 +12,78 @@
 #define TRUE 1
 #define FALSE 0
 
+//Used in sqlite3_exec()'s 4th parameter
 static int callback(void *NotUsed, int argc, char **argv, char **azColName){
-	int i;
-	for(i=0; i<argc; i++){
+	for(int i=0; i<argc; i++){
 		printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
 	}
 	printf("\n");
 	return 0;
 }
 
-void createDatabase(char *databaseName){
-	sqlite3 *db;
+void executeSQLCommand(sqlite3 *db, char *databaseName, char *sql){
 	char *zErrMsg = 0;
-	int  rc;
-	char *sql;
-
-	/* Open database */
-	rc = sqlite3_open(databaseName, &db);
-
-	if( rc ){
-		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-	}else{
-		fprintf(stdout, "Opened database successfully\n");
-	}
-
-	/* Create SQL statement */
-	sql = "CREATE TABLE DATABASE("  \
-			"ID INT PRIMARY KEY     NOT NULL," \
-			"USERNAME           TEXT    NOT NULL," \
-			"PASSWORD           CHAR(100)"
-			");";
+	int rc;
 
 	/* Execute SQL statement */
 	rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
 	if( rc != SQLITE_OK ){
 		fprintf(stderr, "SQL error: %s\n", zErrMsg);
 		sqlite3_free(zErrMsg);
-	}else{
-		fprintf(stdout, "Table created successfully\n");
 	}
+	else
+		fprintf(stdout, "Operation done successfully\n");
+}
+
+//Used to print debug output
+void openDBResponse(int openDBFail){
+	if( openDBFail == TRUE )
+		fprintf(stderr, "Can't open database: Database.db\n");
+	else
+		fprintf(stderr, "Opened database successfully\n");
+}
+
+//Creates databases
+void createDatabase(char *databaseName){
+	sqlite3 *db;
+
+	/* Open database */
+	int rc = sqlite3_open(databaseName, &db);
+	openDBResponse(rc);
+
+	/* Create SQL statement */
+	char *sql = "CREATE TABLE DATABASE("  \
+			"ID       INT       PRIMARY KEY  NOT NULL," \
+			"USERNAME TEXT                   NOT NULL," \
+			"PASSWORD CHAR(100)              NOT NULL);" \
+			"INSERT INTO DATABASE VALUES (1, 'admin', '123456'); ";
+
+	executeSQLCommand(db, databaseName, sql);
 
 	sqlite3_close(db);
 	puts("Database.db is closed");
 }
 
-void openDatabase(sqlite3 *db, char *databaseName){
-	int openDBFail;
-
-	openDBFail = sqlite3_open(databaseName, &db);
-
-	if( openDBFail == TRUE ){
-		fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-	}else{
-		fprintf(stderr, "Opened database successfully\n");
-	}
-
-	puts("Database.db is still open");
-}
-
-void closeDatabase(sqlite3 *db){
-	sqlite3_close(db);
-	puts("closed it");
-}
-
-//checks if Database.db exists. If not, it creates Database.db
-void doesDatabaseExist(sqlite3 *db, char *databaseName){
-	if(access(databaseName, F_OK) != -1 ){
+//Checks if the database exists. If not, the function creates the database.
+void doesDatabaseExist(char *databaseName){
+	if(access(databaseName, F_OK) != -1 )
 		puts("It exists");
-		openDatabase(db, databaseName);
-	}
 	else{
 		puts("It does not exist. Creating it.");
 		createDatabase(databaseName);
-		openDatabase(db, databaseName);
 	}
 }
 
-void addUser(sqlite3 *db){
-	char *zErrMsg = 0;
-	int  rc;
-	char *sql;
-
+//Adds a user to the database
+void addUser(sqlite3 *db, char *databaseName, char *username, char *password){
+	int idNumber = 2;
 	/* Create SQL statement */
-	sql = "INSERT INTO DATABASE (ID,USERNAME,PASSWORD) "  \
-			"VALUES (1, 'admin', '123456'); ";
+	char *sql = sqlite3_mprintf(
+			"INSERT INTO DATABASE VALUES (%d, '%q', '%q');",
+			idNumber, username, password);
 
 	/* Execute SQL statement */
-	rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
-	if( rc != SQLITE_OK ){
-		fprintf(stderr, "SQL error: %s\n", zErrMsg);
-		sqlite3_free(zErrMsg);
-	}else{
-		fprintf(stdout, "Records created successfully\n");
-	}
+	executeSQLCommand(db, databaseName, sql);
 }
 
 int searchForUser(char *username, char *password){

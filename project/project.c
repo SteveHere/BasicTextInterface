@@ -15,10 +15,17 @@
 
 int main(void){
 	sqlite3 *db;
+	int rc;
 	char *databaseName = "Database.db";
-	doesDatabaseExist(db, databaseName);
-	addUser(db);
-	closeDatabase(db);
+	//char *username = "admin";
+	//char *password = "123456";
+	doesDatabaseExist(databaseName);
+
+	rc = sqlite3_open(databaseName, &db);
+	openDBResponse(rc);
+
+	addUser(db, databaseName, "User", "123");
+	sqlite3_close(db);
 
 	//focusing on database now; no relation to other stuff for now
 	/*

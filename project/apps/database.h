@@ -8,12 +8,18 @@
 #ifndef PROJECT_APPS_DATABASE_H_
 #define PROJECT_APPS_DATABASE_H_
 
-void createDatabase(char *databaseName);
-void openDatabase(sqlite3 *db, char *databaseName);
-void closeDatabase(sqlite3 *db);
-void doesDatabaseExist(sqlite3 *db, char *databaseName);
+//Used to print debug output of opening a database
+void openDBResponse(int openDBFail);
 
-void addUser(sqlite3 *db);
+//Creates databases
+void createDatabase(char *databaseName);
+
+//Checks if the database exists. If not, the function creates the database.
+void doesDatabaseExist(char *databaseName);
+
+//Adds a user to the database
+void addUser(sqlite3 *db, char *databaseName, char *username, char *password);
+
 int searchForUser(char *username, char *password);
 int changePassword(char *username, char *password);
 
