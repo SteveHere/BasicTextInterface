@@ -11,8 +11,9 @@
 void createDatabase(char *databaseName);
 void openDatabase(sqlite3 *db, char *databaseName);
 void closeDatabase(sqlite3 *db);
+void doesDatabaseExist(sqlite3 *db, char *databaseName);
 
-int addUser(char *username, char *password);
+void addUser(sqlite3 *db);
 int searchForUser(char *username, char *password);
 int changePassword(char *username, char *password);
 

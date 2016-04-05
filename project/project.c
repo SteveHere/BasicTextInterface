@@ -8,13 +8,19 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sqlite3.h>
+#include <unistd.h>
 #include "environment.h"
 #include "apps/tools.h"
 #include "apps/database.h"
 
 int main(void){
+	sqlite3 *db;
 	char *databaseName = "Database.db";
-	createDatabase(databaseName);
+	doesDatabaseExist(db, databaseName);
+	addUser(db);
+	closeDatabase(db);
+
+	//focusing on database now; no relation to other stuff for now
 	/*
 	char login;
 	do{
