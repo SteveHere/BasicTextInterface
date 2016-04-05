@@ -13,6 +13,9 @@
 #include "apps/database.h"
 
 int main(void){
+	char *databaseName = "Database.db";
+	createDatabase(databaseName);
+	/*
 	char login;
 	do{
 		char *username;
@@ -38,6 +41,7 @@ int main(void){
 			free(password);
 		}
 	}while( !( (login=='N')||(login=='n') ) );
+	*/
 	puts("Bye!");
 	return 0;
 }
