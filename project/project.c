@@ -1,16 +1,16 @@
-//TODO: 
-//- Add a method to login to the Interface
-//  - Set up inputs for Username and Password
+//TODO:
 //  - Use bcrypt to hash password
-//  - Store them in a file
-//  - Find a way to protect the file
+//  - Store them in a sql database
+//  - Find a way to protect the database
 //
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sqlite3.h>
 #include "environment.h"
 #include "apps/tools.h"
+#include "apps/database.h"
 
 int main(void){
 	char login;
