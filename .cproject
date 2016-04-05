@@ -31,10 +31,13 @@
 								<option defaultValue="gnu.c.optimization.level.none" id="gnu.c.compiler.cygwin.exe.debug.option.optimization.level.1781548991" name="Optimization Level" superClass="gnu.c.compiler.cygwin.exe.debug.option.optimization.level" valueType="enumerated"/>
 								<option id="gnu.c.compiler.cygwin.exe.debug.option.debugging.level.1451379531" name="Debug Level" superClass="gnu.c.compiler.cygwin.exe.debug.option.debugging.level" value="gnu.c.debugging.level.max" valueType="enumerated"/>
 								<option id="gnu.c.compiler.option.dialect.std.606258722" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
-								<option id="gnu.c.compiler.option.misc.other.1519350963" name="Other flags" superClass="gnu.c.compiler.option.misc.other" value="-c -fmessage-length=0 -l sqlite3" valueType="string"/>
+								<option id="gnu.c.compiler.option.misc.other.1519350963" name="Other flags" superClass="gnu.c.compiler.option.misc.other" value="-c -fmessage-length=0" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.cygwin.1438266523" superClass="cdt.managedbuild.tool.gnu.c.compiler.input.cygwin"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.cygwin.exe.debug.1384149512" name="Cygwin C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.cygwin.exe.debug">
+								<option id="gnu.c.link.option.libs.794475222" superClass="gnu.c.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="sqlite3"/>
+								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.linker.input.90812778" superClass="cdt.managedbuild.tool.gnu.c.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
