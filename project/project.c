@@ -20,11 +20,11 @@ int main(void){
 	//char *username = "admin";
 	//char *password = "123456";
 	doesDatabaseExist(databaseName);
-
+	//open Database.db
 	rc = sqlite3_open(databaseName, &db);
 	openDBResponse(rc);
 
-	addUser(db, databaseName, "User", "123");
+	addUser(db, "user", "123");
 	sqlite3_close(db);
 
 	//focusing on database now; no relation to other stuff for now
