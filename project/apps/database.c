@@ -21,13 +21,14 @@ static int callback(void *NotUsed, int argc, char **argv, char **azColName){
 	return 0;
 }
 
+//simplifies executing SQL Commands to 3 parameters
 void executeSQLCommand(sqlite3 *db, char *databaseName, char *sql){
 	char *zErrMsg = 0;
-	int rc;
+	int result;
 
 	/* Execute SQL statement */
-	rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
-	if( rc != SQLITE_OK ){
+	result = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+	if( result != SQLITE_OK ){
 		fprintf(stderr, "SQL error: %s\n", zErrMsg);
 		sqlite3_free(zErrMsg);
 	}
@@ -52,10 +53,10 @@ void createDatabase(char *databaseName){
 	openDBResponse(rc);
 
 	/* Create SQL statement */
-	char *sql = "CREATE TABLE DATABASE("  \
-			"ID       INT       PRIMARY KEY  NOT NULL," \
-			"USERNAME TEXT                   NOT NULL," \
-			"PASSWORD CHAR(100)              NOT NULL);" \
+	char *sql = "CREATE TABLE DATABASE("
+			"ID        INT       PRIMARY KEY  NOT NULL,"
+			"USERNAME  TEXT                   NOT NULL,"
+			"PASSWORD  CHAR(100)              NOT NULL);"
 			"INSERT INTO DATABASE VALUES (1, 'admin', '123456'); ";
 
 	executeSQLCommand(db, databaseName, sql);
@@ -74,23 +75,34 @@ void doesDatabaseExist(char *databaseName){
 	}
 }
 
+//
+int getNewIDNumber(sqlite3 *db, char *databaseName){
+	char *sql = "";
+
+	return 2;
+}
+
 //Adds a user to the database
 void addUser(sqlite3 *db, char *databaseName, char *username, char *password){
-	int idNumber = 2;
-	/* Create SQL statement */
+	//Get a new ID number
+	int idNumber = getNewIDNumber(db, databaseName);
+
+	//Create SQL statement
 	char *sql = sqlite3_mprintf(
 			"INSERT INTO DATABASE VALUES (%d, '%q', '%q');",
 			idNumber, username, password);
 
-	/* Execute SQL statement */
+	//Execute SQL statement
 	executeSQLCommand(db, databaseName, sql);
 }
 
+//Searches for the user in the database
 int searchForUser(char *username, char *password){
 	//add code here
 	return TRUE;
 }
 
+//Changes a user's password
 int changePassword(char *username, char *password){
 	//add code here
 	return TRUE;
