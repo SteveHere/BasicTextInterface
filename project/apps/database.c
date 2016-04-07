@@ -23,19 +23,22 @@ static int callback(void *data, int argc, char **argv, char **azColName){
 }
 
 //simplifies executing SQL Commands to 3 parameters
-void executeSQLCommand(sqlite3 *db, char *sql){
+int executeSQLCommand(sqlite3 *db, char *sql){
 	char *zErrMsg = 0;
 	int result;
 	const char* data = "Callback";
 
 	//Execute SQL statement
 	result = sqlite3_exec(db, sql, callback, (void *)data, &zErrMsg);
+
 	if( result != SQLITE_OK ){
 		fprintf(stderr, "SQL error: %s\n", zErrMsg);
 		sqlite3_free(zErrMsg);
 	}
 	else
 		fprintf(stdout, "Operation done successfully\n");
+
+	return result;
 }
 
 //Used to print debug output
@@ -61,7 +64,7 @@ void createDatabase(char *databaseName){
 			"Password  Char(100)              NOT NULL);"
 			"Insert into Database values (1, 'admin', '123456'); ";
 
-	executeSQLCommand(db, sql);
+	rc = executeSQLCommand(db, sql);
 
 	sqlite3_close(db);
 }
@@ -81,26 +84,25 @@ void addUser(sqlite3 *db, char *username, char *password){
 	//Create SQL statement
 	char *sql = sqlite3_mprintf(
 			"Insert into Database values "
-			"((Select max(ID) From Database)+1, '%q', '%q');",
-			username, password);
+			"((Select max(ID) From Database)+1, '%q', '%q');"
+			, username, password);
 
 	//Execute SQL statement
 	executeSQLCommand(db, sql);
 }
 
 //Searches for the user in the database
-int searchForUser(sqlite3 *db, char *username, char *password){
-	//Create SQL statement
-	char * sql = "SELECT EXISTS(SELECT 1 FROM Database WHERE u_tag='tag' LIMIT 1);";
-
-	executeSQLCommand(db, sql);
-
+void searchForUser(sqlite3 *db, char *username, char *password){
 	//add code here
-	return TRUE;
+
 }
 
 //Changes a user's password
-int changePassword(sqlite3 *db, char *username, char *password){
-	//add code here
-	return TRUE;
+void changePassword(sqlite3 *db, char *username, char *password){
+
+	char * sql = sqlite3_mprintf(
+			"Update Database set Password = '%q' where Username='%q'"
+			, password, username);
+
+	executeSQLCommand(db, sql);
 }

@@ -25,6 +25,7 @@ int main(void){
 	openDBResponse(rc);
 
 	addUser(db, "user", "123");
+	changePassword(db, "admin", "123qweasd");
 	sqlite3_close(db);
 
 	//focusing on database now; no relation to other stuff for now
