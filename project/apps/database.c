@@ -8,6 +8,7 @@
 #include <sqlite3.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <string.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -22,7 +23,7 @@ static int callback(void *data, int argc, char **argv, char **azColName){
 	return 0;
 }
 
-//simplifies executing SQL Commands to 3 parameters
+//simplifies executing SQL Commands to 2 parameters
 int executeSQLCommand(sqlite3 *db, char *sql){
 	char *zErrMsg = 0;
 	int result;
@@ -91,18 +92,47 @@ void addUser(sqlite3 *db, char *username, char *password){
 	executeSQLCommand(db, sql);
 }
 
-//Searches for the user in the database
-void searchForUser(sqlite3 *db, char *username, char *password){
-	//add code here
-
-}
-
 //Changes a user's password
 void changePassword(sqlite3 *db, char *username, char *password){
-
+	//Create SQL statement
 	char * sql = sqlite3_mprintf(
-			"Update Database set Password = '%q' where Username='%q'"
+			"Update Database set Password = '%q' where Username = '%q';"
 			, password, username);
 
+	//Execute SQL statement
 	executeSQLCommand(db, sql);
 }
+
+//Searches for the user in the database
+int searchForUser(sqlite3 *db, char *username, char *password){
+	int result;
+	sqlite3_stmt *stmt;
+
+	//Create SQL statement
+	char * sql = sqlite3_mprintf(
+			"Select EXISTS(Select * From Database "
+			"Where Username = '%q' and Password = '%q');"
+				, password, username);
+
+	sqlite3_prepare_v2(db, sql, strlen(sql), &stmt, NULL);
+
+	if (sqlite3_step(stmt) != SQLITE_ROW) {
+	    printf("ERROR 1 reading data: %s\n", sqlite3_errmsg(db));
+	}
+
+	printf("%d columns available, with code %d\n", sqlite3_column_count(stmt), sqlite3_column_bytes(stmt, 0));
+
+	result = sqlite3_column_int(stmt, 0);
+
+	if (sqlite3_step(stmt) != SQLITE_ROW) {
+		printf("ERROR 2 reading data: %s\n", sqlite3_errmsg(db));
+	}
+
+	printf("%s, %s evals to %d\n", username, password, result);
+
+	sqlite3_finalize(stmt);
+
+	return result;
+}
+
+

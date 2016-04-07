@@ -20,8 +20,10 @@ void doesDatabaseExist(char *databaseName);
 //Adds a user to the database
 void addUser(sqlite3 *db, char *username, char *password);
 
-int searchForUser(sqlite3 *db, char *username, char *password);
-int changePassword(sqlite3 *db, char *username, char *password);
+//Changes a user's password
+void changePassword(sqlite3 *db, char *username, char *password);
 
+//Searches for the user in the database
+int searchForUser(sqlite3 *db, char *username, char *password);
 
 #endif /* PROJECT_APPS_DATABASE_H_ */

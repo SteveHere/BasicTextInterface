@@ -26,6 +26,9 @@ int main(void){
 
 	addUser(db, "user", "123");
 	changePassword(db, "admin", "123qweasd");
+	searchForUser(db, "admin", "123qweasd");
+	searchForUser(db,"ue","123");
+	searchForUser(db, "user", "13");
 	sqlite3_close(db);
 
 	//focusing on database now; no relation to other stuff for now
