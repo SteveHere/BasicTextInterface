@@ -105,7 +105,7 @@ void changePassword(sqlite3 *db, char *username, char *password){
 
 //Searches for the user in the database
 int searchForUser(sqlite3 *db, char *username, char *password){
-	int result;
+	int result = 1;
 	sqlite3_stmt *stmt;
 
 	//Create SQL statement
@@ -120,11 +120,9 @@ int searchForUser(sqlite3 *db, char *username, char *password){
 	    printf("ERROR 1 reading data: %s\n", sqlite3_errmsg(db));
 	}
 
-	printf("%d columns available, with code %d\n", sqlite3_column_count(stmt), sqlite3_column_bytes(stmt, 0));
-
 	result = sqlite3_column_int(stmt, 0);
 
-	if (sqlite3_step(stmt) != SQLITE_ROW) {
+	if (sqlite3_step(stmt) != SQLITE_DONE) {
 		printf("ERROR 2 reading data: %s\n", sqlite3_errmsg(db));
 	}
 
