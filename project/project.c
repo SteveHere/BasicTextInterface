@@ -37,7 +37,7 @@ int main(void){
 				isAdmin = isUserAdmin(db, username, password);
 				puts(" ");
 				lineBreak();
-				environment(username, isAdmin);
+				environment(db, username, isAdmin);
 			}
 			else{
 				printf("\nIncorrect username or password. Try again.\n");

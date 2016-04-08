@@ -13,6 +13,7 @@ selection(char select):
 #include "programs/database.h"
 #include "programs/tools.h"
 #include "programs/allApps.h"
+#include "programs/accounts.h"
 
 
 void listOptions(void){
@@ -33,16 +34,16 @@ void listOptions(void){
 	puts(" ");
 }
 
-void selection(sqlite3 *db, char select, char *name){
+void selection(char select, sqlite3 *db, char *username, int isAdmin){
 	switch(select){
 	case '1': currentTime();  break;
 	case '2': electricBill(); break;
 	case '3': guessGame(); break;
 	case '4': calendar(); break;
-	case '5': workplaceSim(name); break;
+	case '5': workplaceSim(username); break;
 	case '6': listOptions(); break;
-	//case '7': manageAccounts(db, char *username, char *password); break;
-	//case '8': changePassword(db, char *username, char *password); break;
+	case '7': manageAccounts(db, username, isAdmin); break;
+	case '8': changeYourPassword(db, username); break;
 	//case '9':
 	case '0': break;
 	default: puts("Invalid option entered. Try again."); break;

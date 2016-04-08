@@ -72,26 +72,26 @@ char charInput(){
 char* stringInput(int turnOffEcho){
 	int bytes_read;
 	size_t read_size = 1;
-	char *name = (char *) malloc (read_size + 1);
+	char *username = (char *) malloc (read_size + 1);
 	if(turnOffEcho == TRUE){
-		bytes_read = my_getpass(&name,&read_size,stdin);
+		bytes_read = my_getpass(&username,&read_size,stdin);
 		//added puts() as newline is not created when 'enter' is pushed
 		puts(" ");
 	}
 	else
-		bytes_read = getline(&name,&read_size,stdin);
+		bytes_read = getline(&username,&read_size,stdin);
 	//removes '\n' at end of line if it exists
-	if(name != NULL){
-		size_t len = strlen(name);
-		if(len > 0 && name[len-1]=='\n'){ name[--len]='\0';}
+	if(username != NULL){
+		size_t len = strlen(username);
+		if(len > 0 && username[len-1]=='\n'){ username[--len]='\0';}
 	}
 	if(bytes_read != -1){
-		return (char *) name;
+		return (char *) username;
 	}
 	//for error handling, a Null pointer is returned as a result.
 	else{
 		fputs("Something went wrong with stringInput(). Please try again.", stderr);
-		free(name);
+		free(username);
 		return NULL;
 	}
 }

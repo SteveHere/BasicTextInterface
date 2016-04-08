@@ -26,7 +26,7 @@ Apps/Tools.c : All of the self-made functions that can be used more than once wi
 
 Apps folder : All of the application files and their headers are here. 
 
-EverythingFromApps.c : The file where most of the magic happens. Include your app here. Modify ListOptions() to add it to the list of options available to the user. Lastly, add it to Selection(char select, char* name) under one of the free cases.
+EverythingFromApps.c : The file where most of the magic happens. Include your app here. Modify ListOptions() to add it to the list of options available to the user. Lastly, add it to Selection(char select, char* username) under one of the free cases.
 
 Envrionment.c : A bit of the magic happens here. This place is mostly a high-level view of the entire thing.
 

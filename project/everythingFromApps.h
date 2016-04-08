@@ -10,6 +10,6 @@
 
 void listOptions(void);
 
-void selection(char select, char *name);
+void selection(char select, sqlite3 *db, char *username, int isAdmin);
 
 #endif /* PROJECT_EVERYTHINGFROMAPPS_H_ */

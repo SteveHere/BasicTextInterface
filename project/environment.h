@@ -8,6 +8,6 @@
 #ifndef PROJECT_ENVIRONMENT_H_
 #define PROJECT_ENVIRONMENT_H_
 
-int environment(char *name, int isAdmin);
+int environment(sqlite3 *db, char *username, int isAdmin);
 
 #endif /* PROJECT_ENVIRONMENT_H_ */
