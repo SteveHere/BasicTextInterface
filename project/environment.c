@@ -1,8 +1,8 @@
 //Description: This is where the whole interface is. A high-level view of the entire thing.
 
 #include <stdio.h>
-#include "apps/tools.h"
 #include "everythingFromApps.h"
+#include "programs/tools.h"
 
 int environment(char *name){
 	int start_boolean = 0;

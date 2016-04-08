@@ -8,7 +8,8 @@ This game is a text-based simulation of the daily:
  */
 
 #include <stdio.h>
-#include "tools.h"
+
+#include "../tools.h"
 
 void mainWorkplaceSimLoop(char *name);
 

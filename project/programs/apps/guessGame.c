@@ -9,7 +9,8 @@ to guess the number.
 #include <time.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "tools.h"
+
+#include "../tools.h"
 
 void guessGame(void){
 	char buffer[7];

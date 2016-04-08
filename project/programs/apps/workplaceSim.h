@@ -5,11 +5,11 @@
  *      Author: SteveHere
  */
 
-#ifndef PROJECT_APPS_WORKPLACESIM_H_
-#define PROJECT_APPS_WORKPLACESIM_H_
+#ifndef PROJECT_PROGRAMS_WORKPLACESIM_H_
+#define PROJECT_PROGRAMS_WORKPLACESIM_H_
 
 void workplaceSim(char *name);
 
 void mainWorkplaceSimLoop(char *name);
 
-#endif /* PROJECT_APPS_WORKPLACESIM_H_ */
+#endif /* PROJECT_PROGRAMS_WORKPLACESIM_H_ */

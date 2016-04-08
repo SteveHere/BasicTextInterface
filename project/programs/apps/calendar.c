@@ -3,7 +3,8 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <time.h>
-#include "tools.h"
+
+#include "../tools.h"
 
 void calendar(void){
 	unsigned char start, number, i, a;

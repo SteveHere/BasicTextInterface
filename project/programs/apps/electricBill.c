@@ -1,7 +1,8 @@
 //Its use: To calculate your electric bill
 
 #include <stdio.h>
-#include "tools.h"
+
+#include "../tools.h"
 
 double calculate(double a){
 	double b = 0;

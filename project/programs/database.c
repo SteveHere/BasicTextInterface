@@ -62,9 +62,10 @@ void createDatabase(char *databaseName){
 	/* Create SQL statement */
 	char *sql = "Create Table Database("
 			"ID        Int       PRIMARY KEY  NOT NULL,"
+			"IsAdmin   Int                    NOT NULL,"
 			"Username  Text                   NOT NULL,"
 			"Password  Char(100)              NOT NULL);"
-			"Insert into Database values (1, 'admin', '123456'); ";
+			"Insert into Database values (1, 1, 'admin', '123456'); ";
 
 	rc = executeSQLCommand(db, sql);
 
@@ -88,8 +89,8 @@ void addUser(sqlite3 *db, char *username, char *password){
 	//Create SQL statement
 	char *sql = sqlite3_mprintf(
 			"Insert into Database values "
-			"((Select max(ID) From Database)+1, '%q', '%q');"
-			, username, password);
+			"((Select max(ID) From Database)+1, %d, '%q', '%q');"
+			, 0, username, password);
 
 	//Execute SQL statement
 	executeSQLCommand(db, sql);

@@ -5,8 +5,8 @@
  *      Author: SteveHere
  */
 
-#ifndef PROJECT_APPS_DATABASE_H_
-#define PROJECT_APPS_DATABASE_H_
+#ifndef PROJECT_PROGRAMS_DATABASE_H_
+#define PROJECT_PROGRAMS_DATABASE_H_
 
 //Used to print debug output of opening a database
 void openDBResponse(int openDBFail);
@@ -26,4 +26,4 @@ void changePassword(sqlite3 *db, char *username, char *password);
 //Searches for the user in the database
 int searchForUser(sqlite3 *db, char *username, char *password);
 
-#endif /* PROJECT_APPS_DATABASE_H_ */
+#endif /* PROJECT_PROGRAMS_DATABASE_H_ */

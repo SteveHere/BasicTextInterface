@@ -10,8 +10,8 @@
 #include <sqlite3.h>
 #include <unistd.h>
 #include "environment.h"
-#include "apps/tools.h"
-#include "apps/database.h"
+#include "programs/database.h"
+#include "programs/tools.h"
 
 int main(void){
 	sqlite3 *db;	int rc;

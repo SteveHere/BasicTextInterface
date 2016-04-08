@@ -10,13 +10,12 @@ selection(char select):
 
 #include <sqlite3.h>
 #include <stdio.h>
-#include "apps/tools.h"
-#include "apps/currentTime.h"
-#include "apps/electricBill.h"
-#include "apps/guessGame.h"
-#include "apps/calendar.h"
-#include "apps/workplaceSim.h"
-#include "apps/database.h"
+
+
+#include "programs/database.h"
+#include "programs/tools.h"
+#include "programs/allApps.h"
+
 
 void listOptions(void){
 	puts(" ----------------------------------------------- ");

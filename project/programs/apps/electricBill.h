@@ -5,11 +5,11 @@
  *      Author: SteveHere
  */
 
-#ifndef PROJECT_APPS_ELECTRICBILL_H_
-#define PROJECT_APPS_ELECTRICBILL_H_
+#ifndef PROJECT_PROGRAMS_ELECTRICBILL_H_
+#define PROJECT_PROGRAMS_ELECTRICBILL_H_
 
 double calculate(double a);
 
 void electricBill(void);
 
-#endif /* PROJECT_APPS_ELECTRICBILL_H_ */
+#endif /* PROJECT_PROGRAMS_ELECTRICBILL_H_ */
