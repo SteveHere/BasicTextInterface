@@ -106,15 +106,32 @@ void doesDatabaseExist(char *databaseName){
 }
 
 //Adds a user to the database
-void addUser(sqlite3 *db, char *username, char *password){
+void addUser(sqlite3 *db, int isAdmin,char *username, char *password){
 	//Create SQL statement
 	char *sql = sqlite3_mprintf(
 			"Insert into Database values "
 			"((Select max(ID) From Database)+1, %d, '%q', '%q');"
-			, 0, username, password);
+			, isAdmin, username, password);
 
 	//Execute SQL statement
 	executeSQLCommand(db, sql);
+}
+
+//Removes a user from the database
+void removeUser(sqlite3 *db, char *username){
+	//Create SQL statement
+	char *sql = sqlite3_mprintf(
+			"Delete from Database Where Username = '%q';"
+			, username);
+
+	//Execute SQL statement
+	executeSQLCommand(db, sql);
+}
+
+//Shows a list of users in the database
+void listUsers(sqlite3 *db){
+	executeSQLCommand(db,
+			"Select Username From Database Order by Username;");
 }
 
 //Changes a user's password
@@ -143,7 +160,7 @@ int searchForUser(sqlite3 *db, char *username, char *password){
 	return result;
 }
 
-//CHecks if the user is an admin
+//Checks if the user is an admin
 int isUserAdmin(sqlite3 *db, char *username, char *password){
 	int result;
 

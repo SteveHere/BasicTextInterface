@@ -17,12 +17,60 @@
 //Add or remove an account
 void manageAccounts(sqlite3 *db, char *username, int isAdmin){
 	if(isAdmin){
-
+		char *password;
+		printf("Enter your password: ");
+		password = stringInput(1);
+		if(searchForUser(db, username, password)){
+			char cont;
+			do{
+				char option;
+				int attemptResult = 0;
+				do{
+					printf("Do you want to Add(A) or Remove(R) accounts? ");
+					option = charInput();
+					attemptResult = (
+							(option=='A') || (option=='a') || (option=='R') || (option=='r')
+					);
+					if(attemptResult != 1){
+						puts("");
+						puts("Incorrect input deteceted. Please enter 'A' or 'R'.");
+						lineBreak();
+					}
+				}while(attemptResult != 1);
+				if( (option == 'A') || (option == 'a') ){
+					int adminPriv = 0;
+					char *newUsername, *newPassword;
+					printf("Make new user admin? ");
+					scanf("%i\n", &adminPriv);
+					printf("New username: ");
+					newUsername = stringInput(0);
+					printf("New user's password: ");
+					newPassword = stringInput(1);
+					addUser(db, adminPriv, newUsername, newPassword);
+					printf("%s has been entered into the database\n", newUsername);
+					free(newUsername);	free(newPassword);
+				}
+				else{
+					char *usernameToBeRemoved;
+					listUsers(db);
+					printf("User to remove: ");
+					usernameToBeRemoved = stringInput(0);
+					removeUser(db, usernameToBeRemoved);
+					printf("%s has been removed from the database.\n"
+							, usernameToBeRemoved);
+					free(usernameToBeRemoved);
+				}
+				cont = inputBinary(1);
+			}while( !( (cont=='N') || (cont=='n') ) );
+		}
+		else{
+			printf("\nIncorrect password. Exiting program.");
+		}
+		free(password);
 	}
 	else{
 		printf("You are not an admin.\n");
 		puts("Please log out and retry using an admin account.");
-		lineBreak();
 	}
 }
 
@@ -31,12 +79,12 @@ void changeYourPassword(sqlite3 *db, char *username){
 	char *password;
 	char *newPassword, *newPassword2;
 	for(int i = 0; i < 3; i++){
-		printf("Enter your current password: ");
+		printf("Current password: ");
 		password = stringInput(1);
 		if(searchForUser(db, username, password)){
-			printf("Enter your new password: ");
+			printf("New password: ");
 			newPassword = stringInput(1);
-			printf("Re-enter your new password: ");
+			printf("Re-enter new password: ");
 			newPassword2 = stringInput(1);
 			if(strcmp(newPassword, newPassword2) == EQUAL ){
 				changePassword(db, username, newPassword);
@@ -58,7 +106,6 @@ void changeYourPassword(sqlite3 *db, char *username){
 			printf("\nIncorrect password. Try again.\n");
 		}
 		free(password);
-		lineBreak();
 	}
 }
 
