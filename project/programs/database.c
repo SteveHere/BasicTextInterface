@@ -42,6 +42,27 @@ int executeSQLCommand(sqlite3 *db, char *sql){
 	return result;
 }
 
+//Get the integer value of a SQL request
+int getSQLResultInt(sqlite3 *db, char *sql){
+	int result;
+	sqlite3_stmt *stmt;
+
+	sqlite3_prepare_v2(db, sql, strlen(sql), &stmt, NULL);
+
+	if (sqlite3_step(stmt) != SQLITE_ROW) {
+		printf("ERROR 1 reading data: %s\n", sqlite3_errmsg(db));
+	}
+
+	result = sqlite3_column_int(stmt, 0);
+
+	if (sqlite3_step(stmt) != SQLITE_DONE) {
+		printf("ERROR 2 reading data: %s\n", sqlite3_errmsg(db));
+	}
+
+	sqlite3_finalize(stmt);
+	return result;
+}
+
 //Used to print debug output
 void openDBResponse(int openDBFail){
 	if( openDBFail == TRUE )
@@ -110,29 +131,29 @@ void changePassword(sqlite3 *db, char *username, char *password){
 //Searches for the user in the database
 int searchForUser(sqlite3 *db, char *username, char *password){
 	int result;
-	sqlite3_stmt *stmt;
 
 	//Create SQL statement
 	char * sql = sqlite3_mprintf(
 			"Select EXISTS(Select * From Database "
 			"Where Username = '%q' and Password = '%q');"
-				, username, password);
+			, username, password);
 
-	sqlite3_prepare_v2(db, sql, strlen(sql), &stmt, NULL);
-
-	if (sqlite3_step(stmt) != SQLITE_ROW) {
-	    printf("ERROR 1 reading data: %s\n", sqlite3_errmsg(db));
-	}
-
-	result = sqlite3_column_int(stmt, 0);
-
-	if (sqlite3_step(stmt) != SQLITE_DONE) {
-		printf("ERROR 2 reading data: %s\n", sqlite3_errmsg(db));
-	}
-
-	sqlite3_finalize(stmt);
+	result = getSQLResultInt(db, sql);
 
 	return result;
 }
 
+//CHecks if the user is an admin
+int isUserAdmin(sqlite3 *db, char *username, char *password){
+	int result;
 
+	//Create SQL statement
+	char * sql = sqlite3_mprintf(
+			"Select EXISTS(Select IsAdmin From Database "
+			"Where Username = '%q' and Password = '%q');"
+			, username, password);
+
+	result = getSQLResultInt(db, sql);
+
+	return result;
+}

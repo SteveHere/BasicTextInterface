@@ -4,7 +4,7 @@
 #include "everythingFromApps.h"
 #include "programs/tools.h"
 
-int environment(char *name){
+int environment(char *name, int isAdmin){
 	int start_boolean = 0;
 	char select;
 	printf("Hello there, %s.\n\n", name);

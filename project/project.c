@@ -24,6 +24,7 @@ int main(void){
 	rc = sqlite3_open(databaseName, &db);
 	openDBResponse(rc);
 	do{
+		int isAdmin;
 		login = inputBinary(0);
 		lineBreak();
 		if( (login=='Y'||login=='y') ){
@@ -33,9 +34,10 @@ int main(void){
 			password = stringInput(1);
 			//verify if username and password are similar
 			if(searchForUser(db, username, password)){
+				isAdmin = isUserAdmin(db, username, password);
 				puts(" ");
 				lineBreak();
-				environment(username);
+				environment(username, isAdmin);
 			}
 			else{
 				printf("\nIncorrect username or password. Try again.\n");

@@ -10,8 +10,6 @@ selection(char select):
 
 #include <sqlite3.h>
 #include <stdio.h>
-
-
 #include "programs/database.h"
 #include "programs/tools.h"
 #include "programs/allApps.h"
@@ -43,7 +41,7 @@ void selection(sqlite3 *db, char select, char *name){
 	case '4': calendar(); break;
 	case '5': workplaceSim(name); break;
 	case '6': listOptions(); break;
-	//case '7': addUser(db, char *username, char *password); break;
+	//case '7': manageAccounts(db, char *username, char *password); break;
 	//case '8': changePassword(db, char *username, char *password); break;
 	//case '9':
 	case '0': break;

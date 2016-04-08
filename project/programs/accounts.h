@@ -9,10 +9,10 @@
 #define PROJECT_PROGRAMS_ACCOUNTS_H_
 
 //Add or remove an account
-manageAccounts(db, char *username, char *password);
+void manageAccounts(db, char *username, char *password);
 
 //Change the current account's password
-changePassword(db, char *username, char *password);
+void changeYourPassword(db, char *username, char *password);
 
 
 #endif /* PROJECT_PROGRAMS_ACCOUNTS_H_ */

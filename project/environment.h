@@ -8,6 +8,6 @@
 #ifndef PROJECT_ENVIRONMENT_H_
 #define PROJECT_ENVIRONMENT_H_
 
-int environment(char *name);
+int environment(char *name, int isAdmin);
 
 #endif /* PROJECT_ENVIRONMENT_H_ */
