@@ -8,6 +8,7 @@ selection(char select):
 - Make sure to add your method here
  */
 
+#include <sqlite3.h>
 #include <stdio.h>
 #include "apps/tools.h"
 #include "apps/currentTime.h"
@@ -15,6 +16,7 @@ selection(char select):
 #include "apps/guessGame.h"
 #include "apps/calendar.h"
 #include "apps/workplaceSim.h"
+#include "apps/database.h"
 
 void listOptions(void){
 	puts(" ----------------------------------------------- ");
@@ -26,12 +28,15 @@ void listOptions(void){
 	puts("|4 --- Calendar Generator                       |");
 	puts("|5 --- Workplace Simulator 2015 (in progress)   |");
 	puts("|6 --- List of Options                          |");
+	puts("|7 --- Add / Delete accounts                    |");
+	puts("|8 --- Change your password                     |");
+	puts("|9 ---                                          |");
 	puts("|0 --- Exit                                     |");
 	puts(" -----------------------------------------------");
 	puts(" ");
 }
 
-void selection(char select, char *name){
+void selection(sqlite3 *db, char select, char *name){
 	switch(select){
 	case '1': currentTime();  break;
 	case '2': electricBill(); break;
@@ -39,8 +44,8 @@ void selection(char select, char *name){
 	case '4': calendar(); break;
 	case '5': workplaceSim(name); break;
 	case '6': listOptions(); break;
-	//case '7':
-	//case '8':
+	//case '7': addUser(db, char *username, char *password); break;
+	//case '8': changePassword(db, char *username, char *password); break;
 	//case '9':
 	case '0': break;
 	default: puts("Invalid option entered. Try again."); break;

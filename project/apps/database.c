@@ -36,9 +36,9 @@ int executeSQLCommand(sqlite3 *db, char *sql){
 		fprintf(stderr, "SQL error: %s\n", zErrMsg);
 		sqlite3_free(zErrMsg);
 	}
-	else
-		fprintf(stdout, "Operation done successfully\n");
-
+	else{
+		//fprintf(stdout, "Operation done successfully\n");
+	}
 	return result;
 }
 
@@ -46,8 +46,9 @@ int executeSQLCommand(sqlite3 *db, char *sql){
 void openDBResponse(int openDBFail){
 	if( openDBFail == TRUE )
 		fprintf(stderr, "Can't open Database.db\n");
-	else
-		fprintf(stderr, "Opened database successfully\n");
+	else{
+		//fprintf(stderr, "Opened database successfully\n");
+	}
 }
 
 //Creates databases
@@ -72,11 +73,13 @@ void createDatabase(char *databaseName){
 
 //Checks if the database exists. If not, the function creates the database.
 void doesDatabaseExist(char *databaseName){
-	if(access(databaseName, F_OK) != -1 )
-		puts("Database.db exists.");
+	if(access(databaseName, F_OK) != -1 ){
+		//puts("Database.db exists.");
+	}
 	else{
-		puts("Database.db does not exist. Creating it.");
+		//puts("Database.db does not exist. Creating it.");
 		createDatabase(databaseName);
+		puts("Database created. Default login: admin, 123456");
 	}
 }
 
@@ -105,14 +108,14 @@ void changePassword(sqlite3 *db, char *username, char *password){
 
 //Searches for the user in the database
 int searchForUser(sqlite3 *db, char *username, char *password){
-	int result = 1;
+	int result;
 	sqlite3_stmt *stmt;
 
 	//Create SQL statement
 	char * sql = sqlite3_mprintf(
 			"Select EXISTS(Select * From Database "
 			"Where Username = '%q' and Password = '%q');"
-				, password, username);
+				, username, password);
 
 	sqlite3_prepare_v2(db, sql, strlen(sql), &stmt, NULL);
 
@@ -125,8 +128,6 @@ int searchForUser(sqlite3 *db, char *username, char *password){
 	if (sqlite3_step(stmt) != SQLITE_DONE) {
 		printf("ERROR 2 reading data: %s\n", sqlite3_errmsg(db));
 	}
-
-	printf("%s, %s evals to %d\n", username, password, result);
 
 	sqlite3_finalize(stmt);
 

@@ -14,29 +14,16 @@
 #include "apps/database.h"
 
 int main(void){
-	sqlite3 *db;
-	int rc;
+	sqlite3 *db;	int rc;
 	char *databaseName = "Database.db";
-	//char *username = "admin";
-	//char *password = "123456";
+	char *username, *password;
+	char login;
+	//Creates database if it doesn't exist
 	doesDatabaseExist(databaseName);
-	//open Database.db
+	//Opens connection to database
 	rc = sqlite3_open(databaseName, &db);
 	openDBResponse(rc);
-
-	addUser(db, "user", "123");
-	changePassword(db, "admin", "123qweasd");
-	searchForUser(db, "admin", "123qweasd");
-	searchForUser(db, "ue","123");
-	searchForUser(db, "user", "123");
-	sqlite3_close(db);
-
-	//focusing on database now; no relation to other stuff for now
-	/*
-	char login;
 	do{
-		char *username;
-		char *password;
 		login = inputBinary(0);
 		lineBreak();
 		if( (login=='Y'||login=='y') ){
@@ -45,7 +32,7 @@ int main(void){
 			printf("Enter your password: ");
 			password = stringInput(1);
 			//verify if username and password are similar
-			if((strcmp(username, "admin") == 0) && (strcmp(password, "123456") == 0)){
+			if(searchForUser(db, username, password)){
 				puts(" ");
 				lineBreak();
 				environment(username);
@@ -58,7 +45,7 @@ int main(void){
 			free(password);
 		}
 	}while( !( (login=='N')||(login=='n') ) );
-	*/
 	puts("Bye!");
+	sqlite3_close(db);
 	return 0;
 }
