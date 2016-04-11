@@ -20,12 +20,12 @@ double calculate(double a){
 
 void electricBill(void){
 	double bill, pm, cm, units;
-	char c;
+	int c;
 	char buffer_a[20], buffer_b[20];
 	printf("\nElectric Bill Calculator\n");
 	lineBreak();
-	c = inputBinary(1);
-	while(c == 'Y'||c == 'y'){
+	c = inputYOrN(0);
+	while(c){
 		lineBreak();
 		bill=0; //reset bill to 0
 		printf("Enter your previous month reading: ");
@@ -43,6 +43,6 @@ void electricBill(void){
 			bill = calculate(units);
 			printf("Total Bill = $%.2f\n",bill);
 		}
-		c = inputBinary(1);
+		c = inputYOrN(0);
 	}
 }

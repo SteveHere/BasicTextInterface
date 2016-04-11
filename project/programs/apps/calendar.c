@@ -8,12 +8,12 @@
 
 void calendar(void){
 	unsigned char start, number, i, a;
-	char c;
+	int c;
 	char buffer_a[4], buffer_b[4];
 	puts("Calendar Generator");
 	lineBreak();
-	c = inputBinary(1);
-	while(c=='Y'||c=='y'){
+	c = inputYOrN(0);
+	while(c){
 		lineBreak();
 		printf("Enter the start day of the month (1(Mon) to 7(Sun)) : ");
 		fgets(buffer_a,4,stdin);
@@ -35,6 +35,6 @@ void calendar(void){
 		}
 		printf("\n---------------------------------\n");
 		printf("\nCalendar complete.\n");
-		c = inputBinary(1);
+		c = inputYOrN(0);
 	}
 }

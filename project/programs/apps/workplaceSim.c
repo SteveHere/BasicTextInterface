@@ -14,14 +14,14 @@ This game is a text-based simulation of the daily:
 void mainWorkplaceSimLoop(char *username);
 
 void workplaceSim(char *username){
-	char cont;
+	int cont;
 	puts("Welcome to Workplace Simulator 2015!");
-	cont = inputBinary(1);
+	cont = inputYOrN(0);
 	lineBreak();
-	while(cont=='y'||cont=='Y'){
+	while(cont){
 		mainWorkplaceSimLoop(username);
 		lineBreak();
-		cont = inputBinary(1);
+		cont = inputYOrN(0);
 	}
 }
 

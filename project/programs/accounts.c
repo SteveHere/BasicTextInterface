@@ -21,7 +21,7 @@ void manageAccounts(sqlite3 *db, char *username, int isAdmin){
 		printf("Enter your password: ");
 		password = stringInput(1);
 		if(searchForUser(db, username, password)){
-			char cont;
+			int cont;
 			do{
 				char option;
 				int attemptResult = 0;
@@ -38,14 +38,11 @@ void manageAccounts(sqlite3 *db, char *username, int isAdmin){
 					}
 				}while(attemptResult != 1);
 				if( (option == 'A') || (option == 'a') ){
-					int adminPriv = 0;
-					char *newUsername, *newPassword;
-					printf("Make new user admin? ");
-					scanf(" %i ", &adminPriv);
+					int adminPriv = inputYesOrNo("Make the new user admin(Y/N)?");
 					printf("New username: ");
-					newUsername = stringInput(0);
+					char *newUsername = stringInput(0);
 					printf("New user's password: ");
-					newPassword = stringInput(1);
+					char *newPassword = stringInput(1);
 					addUser(db, adminPriv, newUsername, newPassword);
 					printf("%s has been entered into the database\n", newUsername);
 					free(newUsername);	free(newPassword);
@@ -61,8 +58,8 @@ void manageAccounts(sqlite3 *db, char *username, int isAdmin){
 							, usernameToBeRemoved);
 					free(usernameToBeRemoved);
 				}
-				cont = inputBinary(1);
-			}while( !( (cont=='N') || (cont=='n') ) );
+				cont = inputYOrN(0);
+			}while( cont );
 		}
 		else{
 			printf("\nIncorrect password. Exiting program.\n");

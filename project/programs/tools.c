@@ -96,27 +96,42 @@ char* stringInput(int turnOffEcho){
 	}
 }
 
-//to be used for Y/N input attempts
-char inputBinary(int continueMessage){
+//To be used for Y/N input attempts
+//(1 for Yes, 0 for No)
+int inputYesOrNo(char *customMessage){
 	char attempt;
 	int attemptResult;
 	do{
-		//output continue message if flag is 1, else output login message
-		if(continueMessage)
-			printf("Enter 'Y' to continue (Y/N): ");
-		else
-			printf("Do you want to login(Y) or exit(N)? ");
+		printf("%s ", customMessage);
 		attempt = charInput();
 		attemptResult = (
 				(attempt=='N') || (attempt=='n') || (attempt=='Y') || (attempt=='y')
-				);
+		);
 		if(attemptResult != TRUE){
 			puts("");
-			puts("Incorrect input deteceted. Please enter 'Y' or 'N'.");
+			puts("Incorrect input detected. Please enter 'Y' or 'N'.");
 			lineBreak();
 		}
 	}while(attemptResult != TRUE);
-	return attempt;
+	//By this point, only 'Y' or 'N' exist.
+	//All we need to do now is to check if it's 'Y'.
+	return ( (attempt=='Y') || (attempt=='y') );
+}
+
+//Version of inputYOrN that contains default templates
+int inputYOrN(int template){
+	char *customMessage;
+	//output message based on continueMessage flag
+	//0 is the default flag
+	switch(template){
+	case 1:
+		customMessage = "Do you want to login(Y) or exit(N)?";
+		break;
+	default:
+		customMessage = "Enter 'Y' to continue (Y/N):";
+		break;
+	}
+	return inputYesOrNo(customMessage);
 }
 
 //TODO: Add more functions for the input of characters into the program

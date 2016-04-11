@@ -17,7 +17,7 @@ int main(void){
 	sqlite3 *db;	int rc;
 	char *databaseName = "Database.db";
 	char *username, *password;
-	char login;
+	int login;
 	//Creates database if it doesn't exist
 	doesDatabaseExist(databaseName);
 	//Opens connection to database
@@ -25,9 +25,9 @@ int main(void){
 	openDBResponse(rc);
 	do{
 		int isAdmin;
-		login = inputBinary(0);
+		login = inputYOrN(1);
 		lineBreak();
-		if( (login=='Y'||login=='y') ){
+		if( login == 1 ){
 			printf("Enter your username: ");
 			username = stringInput(0);
 			printf("Enter your password: ");

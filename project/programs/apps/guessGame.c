@@ -15,11 +15,11 @@ to guess the number.
 void guessGame(void){
 	char buffer[7];
 	unsigned short guess, rNumber, limit;
-	char cont;
+	int cont;
 	srand(time(NULL));
 	puts("The Guessing Game");
 	lineBreak();
-	cont = inputBinary(1);
+	cont = inputYOrN(0);
 	while(cont=='Y'||cont=='y'){
 		guess = 0; // reset guess to 0
 		lineBreak();
@@ -40,6 +40,6 @@ void guessGame(void){
 			}
 			else{printf("Invalid input. Try again.\n");}
 		}
-		cont = inputBinary(1);
+		cont = inputYOrN(0);
 	}
 }
