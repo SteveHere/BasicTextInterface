@@ -26,14 +26,14 @@ void manageAccounts(sqlite3 *db, char *username, int isAdmin){
 				char option;
 				int attemptResult = 0;
 				do{
-					printf("Do you want to Add(A) or Remove(R) accounts? ");
+					printf("\nDo you want to Add(A) or Remove(R) accounts? ");
 					option = charInput();
 					attemptResult = (
 							(option=='A') || (option=='a') || (option=='R') || (option=='r')
 					);
 					if(attemptResult != 1){
 						puts("");
-						puts("Incorrect input deteceted. Please enter 'A' or 'R'.");
+						puts("Incorrect input detected. Please enter 'A' or 'R'.");
 						lineBreak();
 					}
 				}while(attemptResult != 1);
@@ -41,7 +41,7 @@ void manageAccounts(sqlite3 *db, char *username, int isAdmin){
 					int adminPriv = 0;
 					char *newUsername, *newPassword;
 					printf("Make new user admin? ");
-					scanf("%i\n", &adminPriv);
+					scanf(" %i ", &adminPriv);
 					printf("New username: ");
 					newUsername = stringInput(0);
 					printf("New user's password: ");
@@ -52,6 +52,7 @@ void manageAccounts(sqlite3 *db, char *username, int isAdmin){
 				}
 				else{
 					char *usernameToBeRemoved;
+					printf("\nList of users:\n");
 					listUsers(db);
 					printf("User to remove: ");
 					usernameToBeRemoved = stringInput(0);
@@ -64,7 +65,7 @@ void manageAccounts(sqlite3 *db, char *username, int isAdmin){
 			}while( !( (cont=='N') || (cont=='n') ) );
 		}
 		else{
-			printf("\nIncorrect password. Exiting program.");
+			printf("\nIncorrect password. Exiting program.\n");
 		}
 		free(password);
 	}

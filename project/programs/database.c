@@ -15,9 +15,9 @@
 
 //Used in sqlite3_exec()'s 4th parameter
 static int callback(void *data, int argc, char **argv, char **azColName){
-	fprintf(stderr, "%s: ", (const char*)data);
+	//fprintf(stderr, "%s: ", (const char*)data);
 	for(int i=0; i<argc; i++){
-		printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+		printf("%s\n", argv[i] ? argv[i] : "NULL");
 	}
 	printf("\n");
 	return 0;
@@ -27,7 +27,7 @@ static int callback(void *data, int argc, char **argv, char **azColName){
 int executeSQLCommand(sqlite3 *db, char *sql){
 	char *zErrMsg = 0;
 	int result;
-	const char* data = "Callback";
+	const char* data = "";
 
 	//Execute SQL statement
 	result = sqlite3_exec(db, sql, callback, (void *)data, &zErrMsg);
