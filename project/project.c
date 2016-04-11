@@ -1,6 +1,6 @@
 //TODO:
 //  - Use bcrypt to hash password
-//  - Store them in a sql database
+//  - Store them in a sql database (done)
 //  - Find a way to protect the database
 //
 
