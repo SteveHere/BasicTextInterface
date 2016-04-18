@@ -2,8 +2,10 @@
 
 #include <stdio.h>
 #include <time.h>
+#include "../tools.h"
 
 void currentTime(void){
+	clrscr();
 	time_t rawtime;
 	struct tm * timeinfo;
 	time (&rawtime);

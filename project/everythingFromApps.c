@@ -17,6 +17,7 @@ selection(char select):
 
 
 void listOptions(void){
+	clrscr();
 	puts(" ----------------------------------------------- ");
 	puts("|List of Options                                |");
 	puts("|-----------------------------------------------|");
@@ -41,7 +42,7 @@ void selection(char select, sqlite3 *db, char *username, int isAdmin){
 	case '3': guessGame(); break;
 	case '4': calendar(); break;
 	case '5': workplaceSim(username); break;
-	case '6': listOptions(); break;
+	case '6': listOptions(); lineBreak(); break;
 	case '7': manageAccounts(db, username, isAdmin); break;
 	case '8': changeYourPassword(db, username); break;
 	//case '9':

@@ -27,10 +27,11 @@ void manageAccounts(sqlite3 *db, char *username, int isAdmin){
 		if(searchForUser(db, username, password)){
 			int cont;
 			do{
+				lineBreak();
 				char option;
 				int attemptResult = 0;
 				do{
-					printf("\nDo you want to Add(A) or Remove(R) accounts? ");
+					printf("Do you want to Add(A) or Remove(R) accounts? ");
 					option = charInput();
 					attemptResult = (
 							(option=='A') || (option=='a') || (option=='R') || (option=='r')
@@ -58,6 +59,7 @@ void manageAccounts(sqlite3 *db, char *username, int isAdmin){
 		printf("You are not an admin.\n");
 		puts("Please log out and retry using an admin account.");
 	}
+	sleep(2);
 }
 
 //Change the current account's password
@@ -111,7 +113,7 @@ void changeYourPassword(sqlite3 *db, char *username){
 			printf("\nIncorrect password. Try again.\n");
 		}
 		free(password);
-		lineBreak();
+		sleep(2);
 	}
 }
 
