@@ -8,5 +8,6 @@ void currentTime(void){
 	struct tm * timeinfo;
 	time (&rawtime);
 	timeinfo = localtime (&rawtime);
-	printf ("\nCurrent local time and date:\n%s", asctime(timeinfo));
+	printf ("Current local time and date:\n%s", asctime(timeinfo));
+	lineBreak();
 }

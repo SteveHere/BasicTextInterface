@@ -13,12 +13,26 @@ This place is used to:
 #define TRUE 1
 #define FALSE 0
 
-//outputs a line to the console
+//Outputs a line to the console
 void lineBreak(){
 	puts("----------------------------------------");
 }
 
-//a getline() substitute for passwords. Disables echo so that input cannot be seen
+//Clears the command console screen
+void clrscr(){
+
+	//For Linux systems
+	#if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
+        system("clear");
+    #endif
+
+    //For Windows systems
+    #if defined(_WIN32) || defined(_WIN64)
+        system("cls");
+    #endif
+}
+
+//A getline() substitute for passwords. Disables echo so that input cannot be seen
 //Obtained from: http://www.gnu.org/savannah-checkouts/gnu/libc/manual/html_node/getpass.html
 ssize_t my_getpass (char **lineptr, size_t *n, FILE *stream){
 	struct termios old, new;
@@ -41,7 +55,7 @@ ssize_t my_getpass (char **lineptr, size_t *n, FILE *stream){
 	return nread;
 }
 
-//for input of chars
+//For the input of chars
 char charInput(){
 	char *buffer;  char ans;
 	int bytes;
@@ -68,7 +82,7 @@ char charInput(){
 	}
 }
 
-//for input of strings, with the turnOffEcho flag for sensitive info
+//For the input of strings, with the turnOffEcho flag for sensitive info
 char* stringInput(int turnOffEcho){
 	int bytes_read;
 	size_t read_size = 1;
@@ -88,11 +102,11 @@ char* stringInput(int turnOffEcho){
 	if(bytes_read != -1){
 		return (char *) username;
 	}
-	//for error handling, a Null pointer is returned as a result.
+	//for error handling, an empty string is returned as a result.
 	else{
 		fputs("Something went wrong with stringInput(). Please try again.", stderr);
 		free(username);
-		return NULL;
+		return "";
 	}
 }
 

@@ -9,6 +9,7 @@
 #define PROJECT_PROGRAMS_TOOLS_H_
 
 void lineBreak();
+void clrscr();
 ssize_t my_getpass (char **lineptr, size_t *n, FILE *stream);
 char charInput();
 char* stringInput(int turnOffEcho);

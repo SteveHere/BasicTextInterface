@@ -19,15 +19,14 @@ double calculate(double a){
 }
 
 void electricBill(void){
-	double bill, pm, cm, units;
 	int cont;
-	char buffer_a[20], buffer_b[20];
-	printf("\nElectric Bill Calculator\n");
+	puts("Electric Bill Calculator");
 	lineBreak();
 	cont = inputYOrN(0);
 	while( cont ){
+		double bill, pm, cm, units;
+		char buffer_a[20], buffer_b[20];
 		lineBreak();
-		bill=0; //reset bill to 0
 		printf("Enter your previous month reading: ");
 		fgets(buffer_a,15,stdin);
 		sscanf(buffer_a,"%lf",&pm);

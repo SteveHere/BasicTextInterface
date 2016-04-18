@@ -7,13 +7,13 @@
 #include "../tools.h"
 
 void calendar(void){
-	unsigned char start, number, i, a;
 	int cont;
 	char buffer_a[4], buffer_b[4];
 	puts("Calendar Generator");
 	lineBreak();
 	cont = inputYOrN(0);
 	while( cont ){
+		unsigned char start, number, i, a;
 		lineBreak();
 		printf("Enter the start day of the month (1(Mon) to 7(Sun)) : ");
 		fgets(buffer_a,4,stdin);

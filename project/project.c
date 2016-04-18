@@ -34,10 +34,8 @@ int main(void){
 			password = stringInput(1);
 			//verify if username and password are similar
 			if(searchForUser(db, username, password)){
-				puts("hello");
 				isAdmin = isUserAdmin(db, username, password);
-
-				lineBreak();
+				clrscr();
 				environment(db, username, isAdmin);
 			}
 			else{
@@ -49,6 +47,8 @@ int main(void){
 		}
 	}while( login );
 	puts("Bye!");
+	sleep(1);
+	clrscr();
 	sqlite3_close(db);
 	return 0;
 }
