@@ -46,7 +46,7 @@ int main(void){
 			free(username);
 			free(password);
 		}
-	}while( !( (login=='N')||(login=='n') ) );
+	}while( login );
 	puts("Bye!");
 	sqlite3_close(db);
 	return 0;

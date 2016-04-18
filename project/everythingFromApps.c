@@ -12,7 +12,7 @@ selection(char select):
 #include <stdio.h>
 #include "programs/database.h"
 #include "programs/tools.h"
-#include "programs/allApps.h"
+#include "programs/apps/allApps.h"
 #include "programs/accounts.h"
 
 

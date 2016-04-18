@@ -20,7 +20,7 @@ void guessGame(void){
 	puts("The Guessing Game");
 	lineBreak();
 	cont = inputYOrN(0);
-	while(cont=='Y'||cont=='y'){
+	while(cont){
 		guess = 0; // reset guess to 0
 		lineBreak();
 		printf("Enter the maximum limit(1 to 65535): ");

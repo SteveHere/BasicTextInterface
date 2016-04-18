@@ -166,7 +166,7 @@ int isUserAdmin(sqlite3 *db, char *username, char *password){
 
 	//Create SQL statement
 	char * sql = sqlite3_mprintf(
-			"Select EXISTS(Select IsAdmin From Database "
+			"Select IsAdmin From Database "
 			"Where Username = '%q' and Password = '%q');"
 			, username, password);
 

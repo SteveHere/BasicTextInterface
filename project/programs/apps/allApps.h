@@ -8,10 +8,14 @@
 #ifndef PROJECT_PROGRAMS_ALLAPPS_H_
 #define PROJECT_PROGRAMS_ALLAPPS_H_
 
-#include "apps/calendar.h"
-#include "apps/currentTime.h"
-#include "apps/electricBill.h"
-#include "apps/guessGame.h"
-#include "apps/workplaceSim.h"
+void calendar(void);
+
+void currentTime(void);
+
+void electricBill(void);
+
+void guessGame(void);
+
+void workplaceSim(char *username);
 
 #endif /* PROJECT_PROGRAMS_ALLAPPS_H_ */
