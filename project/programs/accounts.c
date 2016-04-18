@@ -14,6 +14,45 @@
 
 #define EQUAL 0
 
+void removeUserFunction(sqlite3* db) {
+	char* usernameToBeRemoved;
+	printf("\nList of users:\n");
+	listUsers(db);
+	printf("User to remove: ");
+	usernameToBeRemoved = stringInput(0);
+	if (doesUserExist(db, usernameToBeRemoved)) {
+		removeUser(db, usernameToBeRemoved);
+		printf("%s has been removed from the database.\n", usernameToBeRemoved);
+	} else {
+		puts("This user does not exist. Please try again.");
+	}
+	free(usernameToBeRemoved);
+}
+
+void addUserFunction(sqlite3* db) {
+	char* newUsername;
+	char* newPassword;
+	int adminPriv = inputYesOrNo("Make the new user admin(Y/N)?");
+	printf("New username: ");
+	newUsername = stringInput(0);
+	if(strlen(newUsername) <= 0){
+		printf("\nInvalid username entered. Please try again.\n");
+	}
+	else{
+		printf("New user's password: ");
+		newPassword = stringInput(1);
+		if(strlen(newUsername) <= 0){
+			printf("\nInvalid password entered. Please try again.\n");
+		}
+		else{
+			addUser(db, adminPriv, newUsername, newPassword);
+			printf("\n%s has been entered into the database\n", newUsername);
+		}
+	}
+	free(newUsername);
+	free(newPassword);
+}
+
 //Add or remove an account
 void manageAccounts(sqlite3 *db, char *username, int isAdmin){
 	if(isAdmin){
@@ -32,31 +71,15 @@ void manageAccounts(sqlite3 *db, char *username, int isAdmin){
 							(option=='A') || (option=='a') || (option=='R') || (option=='r')
 					);
 					if(attemptResult != 1){
-						puts("");
-						puts("Incorrect input detected. Please enter 'A' or 'R'.");
+						printf("\nIncorrect input detected. Please enter 'A' or 'R'.\n");
 						lineBreak();
 					}
 				}while(attemptResult != 1);
 				if( (option == 'A') || (option == 'a') ){
-					int adminPriv = inputYesOrNo("Make the new user admin(Y/N)?");
-					printf("New username: ");
-					char *newUsername = stringInput(0);
-					printf("New user's password: ");
-					char *newPassword = stringInput(1);
-					addUser(db, adminPriv, newUsername, newPassword);
-					printf("%s has been entered into the database\n", newUsername);
-					free(newUsername);	free(newPassword);
+					addUserFunction(db);
 				}
 				else{
-					char *usernameToBeRemoved;
-					printf("\nList of users:\n");
-					listUsers(db);
-					printf("User to remove: ");
-					usernameToBeRemoved = stringInput(0);
-					removeUser(db, usernameToBeRemoved);
-					printf("%s has been removed from the database.\n"
-							, usernameToBeRemoved);
-					free(usernameToBeRemoved);
+					removeUserFunction(db);
 				}
 				cont = inputYOrN(0);
 			}while( cont );

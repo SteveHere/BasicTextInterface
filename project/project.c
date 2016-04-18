@@ -34,8 +34,9 @@ int main(void){
 			password = stringInput(1);
 			//verify if username and password are similar
 			if(searchForUser(db, username, password)){
+				puts("hello");
 				isAdmin = isUserAdmin(db, username, password);
-				puts(" ");
+
 				lineBreak();
 				environment(db, username, isAdmin);
 			}

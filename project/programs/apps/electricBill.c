@@ -25,7 +25,7 @@ void electricBill(void){
 	printf("\nElectric Bill Calculator\n");
 	lineBreak();
 	cont = inputYOrN(0);
-	while(cont){
+	while( cont ){
 		lineBreak();
 		bill=0; //reset bill to 0
 		printf("Enter your previous month reading: ");

@@ -16,7 +16,7 @@ void workplaceSim(char *username){
 	puts("Welcome to Workplace Simulator 2015!");
 	cont = inputYOrN(0);
 	lineBreak();
-	while(cont){
+	while( cont ){
 		mainWorkplaceSimLoop(username);
 		lineBreak();
 		cont = inputYOrN(0);

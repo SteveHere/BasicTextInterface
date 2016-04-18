@@ -146,6 +146,7 @@ void changePassword(sqlite3 *db, char *username, char *password){
 }
 
 //Searches for the user in the database
+//Returns 1 if found, 0 otherwise
 int searchForUser(sqlite3 *db, char *username, char *password){
 	int result;
 
@@ -160,6 +161,22 @@ int searchForUser(sqlite3 *db, char *username, char *password){
 	return result;
 }
 
+//Checks if a user exists based on username
+//Returns 1 if User exists, 0 otherwise
+int doesUserExist(sqlite3 *db, char *username){
+	int result;
+
+	//Create SQL statement
+	char * sql = sqlite3_mprintf(
+			"Select EXISTS(Select * From Database "
+			"Where Username = '%q');"
+			, username);
+
+	result = getSQLResultInt(db, sql);
+
+	return result;
+}
+
 //Checks if the user is an admin
 int isUserAdmin(sqlite3 *db, char *username, char *password){
 	int result;
@@ -167,7 +184,7 @@ int isUserAdmin(sqlite3 *db, char *username, char *password){
 	//Create SQL statement
 	char * sql = sqlite3_mprintf(
 			"Select IsAdmin From Database "
-			"Where Username = '%q' and Password = '%q');"
+			"Where Username = '%q' and Password = '%q';"
 			, username, password);
 
 	result = getSQLResultInt(db, sql);

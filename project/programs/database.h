@@ -30,7 +30,12 @@ void listUsers(sqlite3 *db);
 void changePassword(sqlite3 *db, char *username, char *password);
 
 //Searches for the user in the database
+//Returns 1 if found, 0 otherwise
 int searchForUser(sqlite3 *db, char *username, char *password);
+
+//Checks if a user exists based on username
+//Returns 1 if User exists, 0 otherwise
+int doesUserExist(sqlite3 *db, char *username);
 
 //Checks if the user is an admin
 int isUserAdmin(sqlite3 *db, char *username, char *password);
