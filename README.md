@@ -1,5 +1,5 @@
 # BasicTextInterface
-A text-based interface. Built using gcc, that is installed via Cygwin on Windows. 
+A text-based interface. Developed using Eclipse, that is compiled via gcc with Cygwin on Windows. 
 
 # How to use
 Windows
