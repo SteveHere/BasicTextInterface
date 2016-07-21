@@ -15,6 +15,7 @@ Linux/OSX
 
 # Why build this
 3 main reasons:
+
 1. I was bored and decided to try to make a simple text-based interface in C.
 2. I wanted to write code that can serve as the basis for implementing SQLite in C, and for writing readable C code
 3. I wanted to outline how files are structured in Eclipse. 
