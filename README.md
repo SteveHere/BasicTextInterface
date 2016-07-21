@@ -6,7 +6,7 @@ Windows
 
 1. Install cygwin
 2. Using cygwin, install gcc
-3. Run the program in the cygwin command line interface (CLI).
+3. Compile and run the program in the cygwin command line interface (CLI).
 
 Linux/OSX
 
